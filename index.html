@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>Quiz App</title>
+    <link href="assets/application.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="assets/bootstrap_and_overrides.css" media="all" rel="stylesheet" type="text/css" />
+        
+    <script src="javascripts/lib/jquery.js" type="text/javascript"></script>
+    <script src="javascripts/lib/jquery.mobile.js" type="text/javascript"></script>
+    <script src="javascripts/lib/highcharts.js" type="text/javascript"></script>
+    <script src="javascripts/lib/ember.js" type="text/javascript"></script>
+    <script src="javascripts/quiz.js" type="text/javascript"></script>
+    <script src="javascripts/data.js" type="text/javascript"></script>
+
+    <script type ="text/x-handlebars" data-template-name="app/templates/app">
+      <div>
+        <h2> {{ name }} </h2>
+		<b> Difficulty Level: </b> 
+		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
+							selectionBinding="QuizApp.main.selectedLevel"}}
+		{{view QuizApp.Views.Quiz questionsBinding="questions"}}
+      </div>
+    </script>
+
+    <script type ="text/x-handlebars" data-template-name="app/templates/quiz">
+      <div id="map" class='nonormalMap'>
+        {{#each questions}}
+          {{#view QuizApp.Views.Question questionBinding="this" }}
+            <h3> Q. {{questionText}} </h3>
+			{{#each options}}
+				{{view Ember.Checkbox classNames=""}} {{option}}<br>
+			{{/each}}
+			<br>
+          {{/view}}
+        {{/each}}
+	
+      </div>
+    </script>
+
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <div class='row-fluid'>
+        <div class='span12'>
+          <!-- Stick the Ember App here -->
+          <script type='text/x-handlebars'>
+            {{view QuizApp.Views.App}}
+          </script>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
+    </div>
+  </body>
+</html>
