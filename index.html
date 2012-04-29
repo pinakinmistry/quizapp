@@ -32,7 +32,7 @@
 		{{#if pageId}}
 			<h3> Q {{questionId}}. {{questionText}} </h3>
 				{{#each options}}
-					{{view Ember.Checkbox classNames=""}} {{option}}<br>
+					{{view Em.RadioButton  title=option valueBinding="QuizApp.Models.controller"}}
 				{{/each}}          
 
 			<br>
@@ -40,7 +40,7 @@
           {{/view}}
         {{/each}}
 
-	{{#view QuizApp.Views.Next}}Next Page{{/view}}
+	{{#view QuizApp.Views.Next}}{{QuizApp.main.buttonName}}{{/view}}
 
       </div>
     </script>

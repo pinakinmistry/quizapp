@@ -30,7 +30,8 @@
         difficultyLevels: difficultyLevels,
         selectedLevel: '',
         //currentQuestion: questionsArray.randomQuestion()
-	currentPageId:1	
+		currentPageId:1	,
+		buttonName:'Next Page'
       });
     }
   });
@@ -114,7 +115,8 @@
 	answerBinding: 'question.answer',
 	optionsBinding: 'question.options',
 	pageIdBinding:'question.pageId',
-	questionIdBinding:'question.questionId'
+	questionIdBinding:'question.questionId',
+	buttonNameBinding:'QuizApp.main.buttonName'
   });
 
   QuizApp.Views.Quiz = Ember.View.extend({
@@ -133,6 +135,10 @@
 	if(currentPage<4)
 	{
 		QuizApp.main.set('currentPageId', currentPage+1);		
+	}
+	if(currentPage==4)
+	{
+		QuizApp.main.set('buttonName','Submit');
 	}
     
   }
