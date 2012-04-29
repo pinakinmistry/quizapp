@@ -6,10 +6,8 @@
     Helpers: Ember.Namespace.create(),
     Views: Ember.Namespace.create(),
     Data: Ember.Namespace.create(),
-    ready: function() {
-      this.config = QuizApp.Models.Config.create({
-        content: this.Data.config
-      });
+    
+	ready: function() {
       return this.initQuizApp();
     },
     initQuizApp: function() {
@@ -40,11 +38,7 @@
 }).call(this);
 
 (function() {
-
-  QuizApp.Models.Config = Ember.Object.extend({
   
-  });
-
   QuizApp.Models.Questions = Ember.ArrayProxy.extend({
   /*
     randomQuestion: function() {
@@ -119,7 +113,8 @@
 	difficultyLevelBinding: 'question.difficultyLevel',
 	answerBinding: 'question.answer',
 	optionsBinding: 'question.options',
-	pageIdBinding:'question.pageId'
+	pageIdBinding:'question.pageId',
+	questionIdBinding:'question.questionId'
   });
 
   QuizApp.Views.Quiz = Ember.View.extend({
@@ -128,11 +123,8 @@
   });
   
   
-<<<<<<< HEAD
+
   QuizApp.Views.Next = Em.View.extend({
-=======
-  QuizApp.Views.NextTierView = Em.View.extend({
->>>>>>> f4d5b3a01222763b6a0b2c82c83e671a7b5a68e5
   classNames: ['next-tier-view'],
   tagName: 'button',
   click: function () {

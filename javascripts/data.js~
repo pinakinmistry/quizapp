@@ -6,7 +6,8 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0
+    "answer": 0,
+    "pageId":1
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile?",
@@ -15,7 +16,8 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1
+    "answer": 1,
+    "pageId":1
   },
   {
     "question": "Can you develop a quiz app using Java EE?",
@@ -23,7 +25,8 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2
+    "answer": 2,
+    "pageId":1
   },
   {
     "question": "Can you develop a quiz app using ASP.NET?",
@@ -32,7 +35,8 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0
+    "answer": 0,
+    "pageId": 2
   },
   {
     "question": "Can you develop a quiz app using RoR?",
@@ -42,7 +46,9 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1
+    "answer": 1,
+    "pageId": 2
   }
 ];
+
 

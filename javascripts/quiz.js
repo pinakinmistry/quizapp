@@ -6,10 +6,8 @@
     Helpers: Ember.Namespace.create(),
     Views: Ember.Namespace.create(),
     Data: Ember.Namespace.create(),
-    ready: function() {
-      this.config = QuizApp.Models.Config.create({
-        content: this.Data.config
-      });
+    
+	ready: function() {
       return this.initQuizApp();
     },
     initQuizApp: function() {
@@ -32,7 +30,7 @@
         difficultyLevels: difficultyLevels,
         selectedLevel: '',
         //currentQuestion: questionsArray.randomQuestion()
-	currentPageId:1	
+		currentPageId:1	
       });
     }
   });
@@ -40,11 +38,7 @@
 }).call(this);
 
 (function() {
-
-  QuizApp.Models.Config = Ember.Object.extend({
   
-  });
-
   QuizApp.Models.Questions = Ember.ArrayProxy.extend({
   /*
     randomQuestion: function() {
@@ -119,7 +113,8 @@
 	difficultyLevelBinding: 'question.difficultyLevel',
 	answerBinding: 'question.answer',
 	optionsBinding: 'question.options',
-	pageIdBinding:'question.pageId'
+	pageIdBinding:'question.pageId',
+	questionIdBinding:'question.questionId'
   });
 
   QuizApp.Views.Quiz = Ember.View.extend({
