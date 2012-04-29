@@ -16,7 +16,10 @@
       var questions, questionsArray, difficultyLevels;
 	  
       questions = this.Data.questions.map(function(question) {
-		return QuizApp.Models.Question.create(question);
+		if(question.pageId===1)
+		{
+			return QuizApp.Models.Question.create(question);
+		}
       });
       questionsArray = QuizApp.Models.Questions.create({
         content: questions
@@ -27,8 +30,9 @@
       return this.main = QuizApp.Controllers.Main.create({
         questions: questionsArray,
         difficultyLevels: difficultyLevels,
-        selectedLevel: ''
+        selectedLevel: '',
         //currentQuestion: questionsArray.randomQuestion()
+	currentPageId:1	
       });
     }
   });
@@ -38,33 +42,7 @@
 (function() {
 
   QuizApp.Models.Config = Ember.Object.extend({
-    drilldownMetrics: (function() {
-      return this.get('content').drilldownMetrics;
-    }).property('content'),
-    mapWithItems: (function() {
-      return this.get('content').mapWithItems;
-    }).property('content'),
-    mapWithRegions: (function() {
-      return this.get('content').mapWithRegions;
-    }).property('content'),
-    name: (function() {
-      return this.get('content').name;
-    }).property('content'),
-    type: (function() {
-      return this.get('content').type;
-    }).property('content'),
-    theme: (function() {
-      return this.get('drilldownMetrics').theme;
-    }).property('content'),
-    current_chart_type: (function() {
-      return this.get('drilldownMetrics').current_chart.type;
-    }).property('content'),
-    historical_chart_type: (function() {
-      return this.get('drilldownMetrics').historical_chart.type;
-    }).property('content'),
-    historical_chart_title: (function() {
-      return this.get('drilldownMetrics').historical_chart.title;
-    }).property('content')
+  
   });
 
   QuizApp.Models.Questions = Ember.ArrayProxy.extend({
@@ -86,8 +64,41 @@
   });
 
   QuizApp.Controllers.Main = Ember.Object.extend({
-	
+	getNextQuestions: (function() {
+		var questionsTemp;	
+		var questions=getQuestionArray();
+		var selectedPageId=this.currentPageId;	  
+		var length=questions.content.length;			
+		questionsTemp=getQuestionArray();
+			
+		for(i=length-1;i>=0;i--)
+		{
+			if(questions.content[i].pageId!=selectedPageId)
+			{
+				questionsTemp.content.removeObject(questionsTemp.content[i]);
+			}
+		}
+		
+		if(questionsTemp.content.length>0)
+		{
+			this.set('questions', questionsTemp);			
+		}
+		return this.get('questions');
+    }).observes('currentPageId')
   });
+  
+  function getQuestionArray()
+  {
+	var question,questionArray;
+		question = QuizApp.Data.questions.map(function(Question) {
+        return QuizApp.Models.Question.create(Question);
+      });
+	    questionArray = QuizApp.Models.Questions.create({
+        content: question
+      });
+	 return  questionArray;
+  };
+
   
  
 
@@ -102,12 +113,15 @@
     
   });
 
+
+
   	
   QuizApp.Views.Question = Ember.View.extend({
     questionTextBinding: 'question.questionText',
 	difficultyLevelBinding: 'question.difficultyLevel',
 	answerBinding: 'question.answer',
 	optionsBinding: 'question.options',
+	pageIdBinding:'question.pageId'
   });
 
   QuizApp.Views.Quiz = Ember.View.extend({
@@ -116,11 +130,17 @@
   });
   
   
-   QuizApp.Views.NextTierView = Em.View.extend({
+   QuizApp.Views.Next = Em.View.extend({
   classNames: ['next-tier-view'],
   tagName: 'button',
   click: function () {
-    console.log("Next Button");
+	var currentPage=QuizApp.main.currentPageId;
+	
+	if(currentPage<4)
+	{
+		QuizApp.main.set('currentPageId', currentPage+1);		
+	}
+    
   }
 });
 

@@ -29,14 +29,17 @@
       <div id="map" class='nonormalMap'>
         {{#each questions}}
           {{#view QuizApp.Views.Question questionBinding="this" }}
-            <h3> Q. {{questionText}} </h3>
-			{{#each options}}
-				{{view Ember.Checkbox classNames=""}} {{option}}<br>
-			{{/each}}
+            
+		{{#if pageId}}
+			<h3> Q. {{questionText}} </h3>
+				{{#each options}}
+					{{view Ember.Checkbox classNames=""}} {{option}}<br>
+				{{/each}}
 			<br>
+		{{/if}}
           {{/view}}
         {{/each}}
-	
+	 {{#view QuizApp.Views.Next}}Next Page{{/view}}
       </div>
     </script>
 
@@ -49,7 +52,7 @@
         <div class='span12'>
           <script type='text/x-handlebars'>
             {{view QuizApp.Views.App}}
-			 {{#view QuizApp.Views.NextTierView}}Next Page{{/view}}
+			
           </script>
         </div>
       </div>
