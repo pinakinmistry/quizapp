@@ -113,8 +113,6 @@
     
   });
 
-
-
   	
   QuizApp.Views.Question = Ember.View.extend({
     questionTextBinding: 'question.questionText',
@@ -130,6 +128,7 @@
   });
   
   
+
   QuizApp.Views.Next = Em.View.extend({
   classNames: ['next-tier-view'],
   tagName: 'button',
@@ -143,6 +142,42 @@
     
   }
 });
+
+
+Ember.RadioButton = Ember.View.extend({
+  title: null,
+  checked: false,
+  group: "radio_button",
+  disabled: false,
+
+  classNames: ['ember-radio-button'],
+
+  defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" checked="checked"}} />&nbsp&nbsp{{title}}'),
+
+  bindingChanged: function(){
+  // if(this.get("option") == get(this, 'value')){
+  //     this.set("checked", true);
+  //  }
+  }.observes("value"),
+    
+  change: function() {
+    Ember.run.once(this, this._updateElementValue);
+  },
+
+  _updateElementValue: function() {
+  //  var input = this.$('input:radio');
+  //  set(this, 'value', input.attr('value'));
+  }
+});
+
+QuizApp.Models.qqq = Ember.Object.extend({
+    species : 'hello'
+});
+
+QuizApp.Models.controller = Ember.Object.create({
+    content : QuizApp.Models.qqq.create()
+});
+
 
 
 }).call(this);

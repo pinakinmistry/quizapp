@@ -29,18 +29,35 @@
       <div id="map" class='nonormalMap'>
         {{#each questions}}
           {{#view QuizApp.Views.Question questionBinding="this" }}
+<<<<<<< HEAD
+            
+		{{#if pageId}}
+			<h3> Q. {{questionText}} </h3>
+				{{#each options}}
+					{{view Ember.Checkbox classNames=""}} {{option}}<br>
+				{{/each}}
+=======
             <h3> Q. {{questionText}} </h3>
 			{{#each options}}
-				{{view Ember.Checkbox classNames=""}} {{option}}<br>
+				
+				
+	{{view Em.RadioButton title="Dog" option="dog" group="default" valueBinding="QuizApp.Models.controller"}}
+    
+	
 			{{/each}}
+>>>>>>> f4d5b3a01222763b6a0b2c82c83e671a7b5a68e5
 			<br>
+		{{/if}}
           {{/view}}
         {{/each}}
+<<<<<<< HEAD
 	 {{#view QuizApp.Views.Next}}Next Page{{/view}}
+=======
+		
+	
+>>>>>>> f4d5b3a01222763b6a0b2c82c83e671a7b5a68e5
       </div>
     </script>
-
-
 
   </head>
   <body>

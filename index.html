@@ -28,22 +28,22 @@
     <script type ="text/x-handlebars" data-template-name="app/templates/quiz">
       <div id="map" class='nonormalMap'>
         {{#each questions}}
-          {{#view QuizApp.Views.Question questionBinding="this" }}
-            
+          {{#view QuizApp.Views.Question questionBinding="this" }}            
 		{{#if pageId}}
 			<h3> Q. {{questionText}} </h3>
 				{{#each options}}
 					{{view Ember.Checkbox classNames=""}} {{option}}<br>
-				{{/each}}
+				{{/each}}          
+
 			<br>
 		{{/if}}
           {{/view}}
         {{/each}}
-	 {{#view QuizApp.Views.Next}}Next Page{{/view}}
+
+	{{#view QuizApp.Views.Next}}Next Page{{/view}}
+
       </div>
     </script>
-
-
 
   </head>
   <body>
