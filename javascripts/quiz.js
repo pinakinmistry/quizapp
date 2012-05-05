@@ -102,6 +102,8 @@
     
   });
 
+
+
   	
   QuizApp.Views.Question = Ember.View.extend({
     questionTextBinding: 'question.questionText',

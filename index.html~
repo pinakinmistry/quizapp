@@ -5,14 +5,16 @@
     <title>Quiz App</title>
     <link href="assets/application.css" media="all" rel="stylesheet" type="text/css" />
     <link href="assets/bootstrap_and_overrides.css" media="all" rel="stylesheet" type="text/css" />
-        
+	<link href="style.css" media="all" rel="stylesheet" type="text/css" />
+   
     <script src="javascripts/lib/jquery.js" type="text/javascript"></script>
     <script src="javascripts/lib/jquery.mobile.js" type="text/javascript"></script>
     <script src="javascripts/lib/highcharts.js" type="text/javascript"></script>
     <script src="javascripts/lib/ember.js" type="text/javascript"></script>
     <script src="javascripts/quiz.js" type="text/javascript"></script>
     <script src="javascripts/data.js" type="text/javascript"></script>
-
+	
+ 
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
       <div>
         <h2> {{ name }} </h2>
@@ -38,16 +40,16 @@
       </div>
     </script>
 
+
+
   </head>
   <body>
     <div class='container-fluid'>
       <div class='row-fluid'>
         <div class='span12'>
-          <!-- Stick the Ember App here -->
           <script type='text/x-handlebars'>
             {{view QuizApp.Views.App}}
-
-{{#view QuizApp.Views.NextTierView}}Next Page{{/view}}
+			 {{#view QuizApp.Views.NextTierView}}Next Page{{/view}}
           </script>
         </div>
       </div>
@@ -58,3 +60,4 @@
     </div>
   </body>
 </html>
+
