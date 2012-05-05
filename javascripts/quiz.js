@@ -149,11 +149,10 @@ Ember.RadioButton = Ember.View.extend({
   //  var input = this.$('input:radio');
   //  set(this, 'value', input.attr('value'));
   }
-
 });
 
 QuizApp.Models.qqq = Ember.Object.extend({
-    species : ''
+    species : 'hello'
 });
 
 QuizApp.Models.controller = Ember.Object.create({
