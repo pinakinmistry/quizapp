@@ -31,16 +31,19 @@
           {{#view QuizApp.Views.Question questionBinding="this" }}
             <h3> Q. {{questionText}} </h3>
 			{{#each options}}
-				{{view Ember.Checkbox classNames=""}} {{option}}<br>
+				
+				
+	{{view Em.RadioButton title="Dog" option="dog" group="default" valueBinding="QuizApp.Models.controller"}}
+    
+	
 			{{/each}}
 			<br>
           {{/view}}
         {{/each}}
+		
 	
       </div>
     </script>
-
-
 
   </head>
   <body>
