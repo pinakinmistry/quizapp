@@ -113,6 +113,15 @@
     templateName: 'app/templates/quiz'
   });
 
+
+  QuizApp.Views.NextTierView = Em.View.extend({
+  classNames: ['next-tier-view'],
+  tagName: 'button',
+  click: function () {
+    console.log("Next Button");
+  }
+});
+
 }).call(this);
 
 
