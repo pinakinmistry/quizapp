@@ -21,23 +21,38 @@ background-color: '';
 float:right;
 }
 
-<<<<<<< HEAD
+
 
 .nonormalMap{
 
 margin-top:80px;
-=======
+}
+
 #details{
 float: left;
+margin-top:50px;
 width: 20%;
 }
 
 #map{
 float: right;
-width: 75%
+width: 75%;
+line-height:2.0em;
 }
 
 .inputElements{
 width: 80%;
->>>>>>> 03cca9d97cddb950adca8c827013e0c58b05b132
+
+}
+
+h4{
+
+margin-left:560px;
+
+}
+
+#next{
+float:right;
+
+margin-top:100px;
 }

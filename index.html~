@@ -20,7 +20,7 @@
       <div>
         <h2> {{ name }} </h2>
 		
-			<h3> Score :{{ answer }} </h3>	
+			<h4> Score :{{ answer }} </h4>	
 </div>
     <div id="details">
 		<b> Name</b>
@@ -52,12 +52,12 @@
         {{/each}}
 		
 		
+	  </div>	
 		
-		
-
+  <div id="next">
 	{{#view QuizApp.Views.Next}}{{QuizApp.main.buttonName}}{{/view}}
-
-      </div>
+  </div>
+    
     </script>
 
   </head>
@@ -72,7 +72,7 @@
           </script>
         </div>
       </div>
-      <hr>
+     
       
     </div>
   </body>
