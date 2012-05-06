@@ -20,20 +20,20 @@
       <div>
         <h2> {{ name }} </h2>
 		
-			<h4> Score :{{ answer }} </h4>	
+			<h4> Score :	{{ answer }} </h4>
 </div>
     <div id="details">
 		<b> Name</b>
 		{{view QuizApp.Views.Text}}
 		<b>Employee Id</b>
 		{{view QuizApp.Views.Text}}
-		<b>Score</b>
-		{{view QuizApp.Views.DisabledText}}
+		
 		<b>Timer</b>
 		{{view QuizApp.Views.DisabledText}}
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
 							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}		
+
 
       </div>
   
@@ -42,7 +42,9 @@
           {{#view QuizApp.Views.Question questionBinding="this" }}            
 		{{#if pageId}}
 			<h3> Q {{QuizApp.main.currentQuestionId}}. {{questionText}} </h3>
-				{{#each options}}
+				
+
+{{#each options}}
 					{{view Em.RadioButton  title=option option=option}}
 				{{/each}}          
 
