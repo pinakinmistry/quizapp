@@ -137,6 +137,22 @@
 		}		
 	  }
  });
+ 
+ QuizApp.Views.Text = Em.View.extend({
+	 classNames: ['inputElements'],
+	 tagName: 'input',
+	 enabled: true,
+	 });
+ QuizApp.Views.DisabledText = Em.View.extend({
+	 classNames: ['inputElements'],
+	 tagName: 'input',
+	 enabled: false,
+	 });
+
+ 
+ QuizApp.Views.Name = Em.View.extend({
+	 
+	 });
 
 
 Ember.RadioButton = Ember.View.extend({

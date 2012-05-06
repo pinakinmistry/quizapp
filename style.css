@@ -14,7 +14,6 @@ height: 480px;
 width: 49.8%;
 margin:10px auto;
 padding: 60px;
-
 }
 .next-tier-view{
 background-color: '';
@@ -22,8 +21,23 @@ background-color: '';
 float:right;
 }
 
+<<<<<<< HEAD
 
 .nonormalMap{
 
 margin-top:80px;
+=======
+#details{
+float: left;
+width: 20%;
+}
+
+#map{
+float: right;
+width: 75%
+}
+
+.inputElements{
+width: 80%;
+>>>>>>> 03cca9d97cddb950adca8c827013e0c58b05b132
 }
