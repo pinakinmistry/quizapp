@@ -32,6 +32,7 @@
         //currentQuestion: questionsArray.randomQuestion()
 		currentPageId:1	,
 		buttonName:'Next Page',
+		buttonStart:'Start Quiz',
 		currentQuestionId:1,
 	answerCount:0,
 	questionCount:0
@@ -104,6 +105,7 @@
 	pageIdBinding:'question.pageId',
 	questionIdBinding:'question.questionId',
 	buttonNameBinding:'QuizApp.main.buttonName',
+	buttonStartBinding:'QuizApp.main.buttonStart',
 	currentQuestionIdBinding:'main.currentQuestionId'
   });
 
@@ -136,8 +138,45 @@
 			QuizApp.main.set('buttonName','Submit');
 		}		
 	  }
+	
+	  
  });
  
+ 
+
+
+ QuizApp.Views.start = Em.View.extend({
+	  classNames: ['inputElements'],
+	  tagName: 'button',
+
+	  click: function () {
+	  	  setInterval(function() {
+    var timer = $('span').html();
+    timer = timer.split(':');
+    var minutes = timer[0];
+    var seconds = timer[1];
+    seconds -= 1;
+    if (minutes < 0) return;
+    
+    if (seconds < 0 && minutes != 0) {
+        minutes -= 1;
+        seconds = 59;
+    }
+    else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
+    if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
+    $('span').html(minutes + ':' + seconds);
+}, 1000);
+
+
+
+			  }
+	
+	  
+ });
+ 
+ 
+
+
  QuizApp.Views.Text = Em.View.extend({
 	 classNames: ['inputElements'],
 	 tagName: 'input',

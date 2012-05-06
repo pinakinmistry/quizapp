@@ -19,8 +19,9 @@
 
       <div>
         <h2> {{ name }} </h2>
-		
-			<h4> Score :	{{ answer }} </h4>
+		<br>
+			<b>Timer : </b>
+		<span>1:00</span><h4> Score :	{{ answer }} </h4>
 </div>
     <div id="details">
 		<b> Name</b>
@@ -28,12 +29,11 @@
 		<b>Employee Id</b>
 		{{view QuizApp.Views.Text}}
 		
-		<b>Timer</b>
-		{{view QuizApp.Views.DisabledText}}
+		
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
 							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}		
-
+{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
 
       </div>
   
@@ -56,6 +56,7 @@
 		
 	  </div>	
 		
+
   <div id="next">
 	{{#view QuizApp.Views.Next}}{{QuizApp.main.buttonName}}{{/view}}
   </div>
