@@ -6,18 +6,18 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":1,
     "questionId":1
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile (Low)?",
 	"difficultyLevel": "low",
-    "options": [ {"option": "Yes"},
+    "options": [                {"option": "Yes"},
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+    "answer": "Not sure",
     "pageId":1,
   	"questionId":2
   },

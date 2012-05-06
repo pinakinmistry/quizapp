@@ -16,19 +16,23 @@
 	
  
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
-      
+      <div>
+        <h2> {{ name }} </h2>
+		
+			
+      </div>
   
       <div id="map" class='nonormalMap'>
         {{#each questions}}
           {{#view QuizApp.Views.Question questionBinding="this" }}            
-		
+		{{#if pageId}}
 			<h3> Q {{QuizApp.main.currentQuestionId}}. {{questionText}} </h3>
 				{{#each options}}
 					{{view Em.RadioButton  title=option valueBinding="QuizApp.Models.controller"}}
 				{{/each}}          
 
 			<br>
-		
+		{{/if}}
           {{/view}}
         {{/each}}
 

@@ -32,7 +32,9 @@
         //currentQuestion: questionsArray.randomQuestion()
 		currentPageId:1	,
 		buttonName:'Next Page',
-		currentQuestionId:1
+		currentQuestionId:1,
+	answerCount:0,
+	questionCount:0
       });
     }
   });
@@ -104,12 +106,26 @@
 	currentQuestionIdBinding:'main.currentQuestionId'
   });
 
+
+
   QuizApp.Views.Next = Em.View.extend({
 	  classNames: ['next-tier-view'],
 	  tagName: 'button',
+
 	  click: function () {
 		var currentPage=QuizApp.main.currentPageId;
 		var currentQuestion=QuizApp.main.currentQuestionId;
+
+		var user_answer=$("input[@name=default]:checked").val();
+		var question=getQuestionArray();	
+				
+		if(user_answer===question[currentQuestion-1].answer)
+		{		
+			QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
+		}
+			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);
+		console.log(QuizApp.main.answerCount);
+
 		if(currentQuestion<10)
 		{
 			QuizApp.main.set('currentQuestionId', currentQuestion+1);		
