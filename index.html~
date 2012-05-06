@@ -28,7 +28,7 @@
 		{{#if pageId}}
 			<h3> Q {{QuizApp.main.currentQuestionId}}. {{questionText}} </h3>
 				{{#each options}}
-					{{view Em.RadioButton  title=option valueBinding="QuizApp.Models.controller"}}
+					{{view Em.RadioButton  title=option option=option}}
 				{{/each}}          
 
 			<br>

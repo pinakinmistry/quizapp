@@ -13,11 +13,11 @@ QuizApp.Data.questions = [
   {
     "question": "Can you develop a quiz app using jQuery Mobile (Low)?",
 	"difficultyLevel": "low",
-    "options": [                {"option": "Yes"},
+    "options":                [ {"option": "Yes"},
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": "Not sure",
+     "answer": "Yes",
     "pageId":1,
   	"questionId":2
   },
@@ -27,7 +27,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "Yes",
     "pageId":1,
 	"questionId":3
   },
@@ -37,7 +37,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":1,
     "questionId":4
   },
@@ -48,7 +48,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId":1,
   	"questionId":5
   },
@@ -58,7 +58,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "Yes",
     "pageId":1,
 	"questionId":6
   },
@@ -68,7 +68,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":1,
     "questionId":7
   },
@@ -79,7 +79,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId":1,
   	"questionId":8
   },
@@ -89,7 +89,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+   "answer": "Yes",
     "pageId":1,
 	"questionId":9
   },
@@ -100,7 +100,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+   "answer": "Yes",
     "pageId": 2,
     "questionId":10
   },
@@ -112,7 +112,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId": 2,
     "questionId":11
   },
@@ -122,7 +122,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+  "answer": "Yes",
     "pageId":2,
     "questionId":12
   },
@@ -133,7 +133,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId": 2,
     "questionId":13
   },
@@ -145,7 +145,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId": 2,
     "questionId":14
   },
@@ -155,7 +155,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":2,
     "questionId":15
   },
@@ -166,7 +166,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId": 2,
     "questionId":16
   },
@@ -178,7 +178,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+   "answer": "Yes",
     "pageId": 2,
     "questionId":17
   },
@@ -188,7 +188,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+   "answer": "Yes",
     "pageId":2,
     "questionId":18
   },
@@ -199,7 +199,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+   "answer": "Yes",
     "pageId":3,
   	"questionId":19
   },
@@ -209,7 +209,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "Yes",
     "pageId":3,
 	"questionId":20
   },
@@ -220,7 +220,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+   "answer": "Yes",
     "pageId": 3,
     "questionId":21
   },
@@ -231,7 +231,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+   "answer": "Yes",
     "pageId":3,
   	"questionId":22
   },
@@ -241,7 +241,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "Yes",
     "pageId":3,
 	"questionId":23
   },
@@ -252,7 +252,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId": 3,
     "questionId":24
   },
@@ -263,7 +263,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId":3,
   	"questionId":25
   },
@@ -273,7 +273,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+   "answer": "Yes",
     "pageId":3,
 	"questionId":26
   },
@@ -284,7 +284,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId": 3,
     "questionId":27
   },
@@ -296,7 +296,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId": 4,
     "questionId":28
   },
@@ -308,7 +308,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId": 4,
     "questionId":29
   },
@@ -320,7 +320,7 @@ QuizApp.Data.questions = [
 				 {"option": "Not sure"},
 				 {"option": "God knows"}
 				],
-    "answer": 1,
+    "answer": "Yes",
     "pageId": 4,
     "questionId":30
   }

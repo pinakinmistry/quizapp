@@ -84,6 +84,7 @@
 
   
   QuizApp.Views.App = Ember.View.extend({
+    answerBinding:'QuizApp.main.answerCount',
     nameBinding: 'QuizApp.config.name',
     mainBinding: 'QuizApp.main',
     questionsBinding: 'main.questions',

@@ -19,7 +19,7 @@
       <div>
         <h2> {{ name }} </h2>
 		
-			
+			<h3> Score :{{ answer }} </h3>	
       </div>
   
       <div id="map" class='nonormalMap'>
@@ -35,6 +35,10 @@
 		{{/if}}
           {{/view}}
         {{/each}}
+		
+		
+		
+		
 
 	{{#view QuizApp.Views.Next}}{{QuizApp.main.buttonName}}{{/view}}
 
@@ -47,7 +51,9 @@
       <div class='row-fluid'>
         <div class='span12'>
           <script type='text/x-handlebars'>
-            {{view QuizApp.Views.App}}			
+            {{view QuizApp.Views.App}}	
+
+		
           </script>
         </div>
       </div>

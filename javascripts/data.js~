@@ -13,11 +13,11 @@ QuizApp.Data.questions = [
   {
     "question": "Can you develop a quiz app using jQuery Mobile (Low)?",
 	"difficultyLevel": "low",
-    "options": [ {"option": "Yes"},
+    "options":                [ {"option": "Yes"},
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": "Not sure",
+    "answer": "Yes",
     "pageId":1,
   	"questionId":2
   },
@@ -27,7 +27,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "No",
     "pageId":1,
 	"questionId":3
   },
@@ -37,7 +37,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":1,
     "questionId":4
   },
@@ -48,7 +48,7 @@ QuizApp.Data.questions = [
 				 {"option": "No"},
 				 {"option": "Not sure"} 
 				],
-    "answer": 1,
+    "answer": "No",
     "pageId":1,
   	"questionId":5
   },
@@ -58,7 +58,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"} 
 				],
-    "answer": 2,
+    "answer": "No",
     "pageId":1,
 	"questionId":6
   },
@@ -68,7 +68,7 @@ QuizApp.Data.questions = [
     "options": [ {"option": "Yes"},
 				 {"option": "No"}
 				],
-    "answer": 0,
+    "answer": "Yes",
     "pageId":1,
     "questionId":7
   },
