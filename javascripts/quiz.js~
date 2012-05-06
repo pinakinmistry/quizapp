@@ -14,7 +14,7 @@
       var questions, questionsArray, difficultyLevels;
 	  
       questions = this.Data.questions.map(function(question) {		
-			if(question.QuestionId===1)
+			if(question.questionId===1)
 			{
 				return QuizApp.Models.Question.create(question);
 			}
