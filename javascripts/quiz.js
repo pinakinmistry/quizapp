@@ -167,7 +167,9 @@
     $('span').html(minutes + ':' + seconds);
 }, 1000);
 
-
+this.$().hide("slow", function() {
+            that.remove();
+        });
 
 			  }
 	
@@ -205,7 +207,6 @@ Ember.RadioButton = Ember.View.extend({
 	defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" 			checked="checked"}} />&nbsp&nbsp{{title}}'),
 
 	bindingChanged: function(){
-
 	  // if(this.get("option") == get(this, 'value')){
 	  //     this.set("checked", true);
 	  //  }
