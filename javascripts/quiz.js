@@ -133,10 +133,26 @@
 		{
 			QuizApp.main.set('currentQuestionId', currentQuestion+1);		
 		}
+		
+		if(QuizApp.main.get('buttonName')==='Submit'){
+		
+		console.log("Your score is "+QuizApp.main.get('answerCount'));
+		alert("Your score is "+QuizApp.main.get('answerCount'));
+		alert("Time taken to complete the test is  "+min+" mins "+sec+" secs");
+		this.$().hide("slow", function() {
+            that.remove();
+        });
+		$('span').html().hide();
+		}
+		
 		if(currentQuestion===9)
 		{
 			QuizApp.main.set('buttonName','Submit');
-		}		
+		}	
+
+        
+
+		
 	  }
 	
 	  
@@ -165,19 +181,23 @@
     else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
     if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
     $('span').html(minutes + ':' + seconds);
+	min=minutes;
+	sec=seconds;
 }, 1000);
 
-this.$().hide("slow", function() {
+          this.$().hide("slow", function() {
             that.remove();
         });
 
+		
 			  }
 	
 	  
  });
  
  
-
+var min;
+var sec;
 
  QuizApp.Views.Text = Em.View.extend({
 	 classNames: ['inputElements'],
