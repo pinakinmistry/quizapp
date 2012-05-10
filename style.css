@@ -1,20 +1,23 @@
 body {
-   background-color: #FEB;   
-   height: 300px;
-width: 80%;
-margin-top:50px;
-margin-left:130px;
-margin-right:50px;
+   background-color: #000;   
+	
 }
 
 button{
-background-color: #f00;
+background-color: white;
 }
 .container-fluid{
+background-image: url('image4.jpg');
+background-repeat: no-repeat;
 background-color: white;
+height: 480px;
+width: 49.8%;
+margin:10px auto;
+padding: 60px;
 
 }
 .next-tier-view{
-background-color: #FEB;
+background-color: '';
+
 float:right;
 }
