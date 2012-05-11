@@ -7,18 +7,10 @@ button{
 background-color: white;
 }
 .container-fluid{
-background-image: url('image4.jpg');
-background-repeat: no-repeat;
-background-color: white;
-height: 480px;
-width: 49.8%;
-margin:10px auto;
-padding: 60px;
+
 }
 .next-tier-view{
 background-color: '';
-
-float:right;
 }
 
 
@@ -38,6 +30,7 @@ width: 20%;
 float: right;
 width: 75%;
 line-height:2.0em;
+height:195px;
 }
 
 
@@ -47,13 +40,13 @@ width: 80%;
 }
 
 h4{
-
-margin-left:560px;
+float: right;
 
 }
 
-#next{
-float:right;
+#timer{
+float: left;
+}
 
-margin-top:100px;
+#next{
 }

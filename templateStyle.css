@@ -240,6 +240,8 @@ padding:0px;
 margin:auto;
 text-align:center;
 color:#999999;
+position: relative;
+left: -60px;
 }
 .left_footer{
 float:left;
