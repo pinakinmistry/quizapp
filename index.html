@@ -25,36 +25,43 @@
 		<h4> Score : {{ answer }} </h4>
 	</div>
   	<div id="details">
-		<b> Name</b>
-		{{view QuizApp.Views.Text}}
+		<!--
+		
 		<b>Employee Id</b>
 		{{view QuizApp.Views.Text}}
 		
 		
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	
+							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	-->
 		{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
 
       </div>
   
       <div id="map" class='nonormalMap'>
-        {{#each questions}}
-          {{#view QuizApp.Views.Question questionBinding="this" }}            
+	  {{#unless QuizApp.main.isStartPage}}
+			Start Page</br>
+			<b> Name</b>{{view QuizApp.Views.Text}}
+		{{/unless}}
+		{{#unless QuizApp.main.isSubmitted}}
+			{{#each questions}}
+			  {{#view QuizApp.Views.Question questionBinding="this" }}            
 
-		{{#if pageId}}
-			<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
+				{{#if pageId}}
+					<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
 
-				{{#each options}}
-					{{view Em.RadioButton  title=option option=option}}
-				{{/each}}          
-
-			<br>
-		{{/if}}
-          {{/view}}
-        {{/each}}
-		
-		
+						{{#each options}}
+							{{view Em.RadioButton  title=option option=option}}
+						{{/each}} 
+					<br>
+				{{/if}}
+			  {{/view}}
+			{{/each}}			
+		{{/unless}}
+			
+		{{#unless QuizApp.main.isResultDisplayed}}
+			Results
+		{{/unless}}
 	  </div>	
 		
 	<div id="footer">

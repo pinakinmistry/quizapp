@@ -30,8 +30,8 @@
 	  {
 		randIncrement++;
 	  }
-	  console.log('Incrementor :'+randIncrement);	  
-      return this.main = QuizApp.Controllers.Main.create({
+	  console.log('Incrementor :'+randIncrement);	
+	  return this.main = QuizApp.Controllers.Main.create({
         questions: questionsArray,
         difficultyLevels: difficultyLevels,
         selectedLevel: '',
@@ -43,7 +43,10 @@
 		answerCount:0,
 		questionCount:0,
 		questionIncrement:randIncrement,
-		quizSetCount:0
+		quizSetCount:0,
+		isSubmitted:true,
+		isResultDisplayed:true,
+		isStartPage:false
       });
     }
   });
@@ -154,6 +157,9 @@
 				//that.remove();
 			});
 			//$('span').html().hide();
+			QuizApp.main.set('isResultDisplayed',false);
+			QuizApp.main.set('isSubmitted',true);	
+						
 	}
 	else if(currentQuestion<10)
 	{
@@ -199,7 +205,8 @@
 				console.log('Question Count :'+QuizApp.main.questionCount);
 				console.log('Random Value: '+randVal);
 				startTimer();
-				
+				QuizApp.main.set('isSubmitted',false);
+				QuizApp.main.set('isStartPage',true);
 			}
 
  });
