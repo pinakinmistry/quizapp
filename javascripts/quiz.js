@@ -25,6 +25,12 @@
       difficultyLevels = Ember.ArrayProxy.create({
         content: ['select one','low', "medium", "high"]
       });
+	  var randIncrement = Math.round(Math.random()*3);
+	  if (randIncrement===0)
+	  {
+		randIncrement++;
+	  }
+	  console.log('Incrementor :'+randIncrement);	  
       return this.main = QuizApp.Controllers.Main.create({
         questions: questionsArray,
         difficultyLevels: difficultyLevels,
@@ -34,8 +40,10 @@
 		buttonName:'Next Page',
 		buttonStart:'Start Quiz',
 		currentQuestionId:1,
-	answerCount:0,
-	questionCount:0
+		answerCount:0,
+		questionCount:0,
+		questionIncrement:randIncrement,
+		quizSetCount:0
       });
     }
   });
@@ -65,22 +73,33 @@
   QuizApp.Controllers.Main = Ember.Object.extend({
 	getNextQuestions: (function() {
 		
-		this.set('questions',getQuestionArray());			
+		this.set('questions',getQuestionArray(false));			
 		
 		return this.get('questions');
     }).observes('currentQuestionId','selectedLevel')
   });
   
-  function getQuestionArray()
+ function getQuestionArray(isQuestionId)
   {	
-		var Question;
+		var Question,currentQuestion;
 		Question = QuizApp.Data.questions.map(function(question) {
 			if(QuizApp.main.currentQuestionId===question.questionId)
 			{
-				return QuizApp.Models.Question.create(question);
+				if (isQuestionId)
+				{
+					currentQuestion=QuizApp.Models.Question.create(question);					
+				}
+				else
+				{
+				    return QuizApp.Models.Question.create(question);
+				}
 			}
-      });	   
-	 return  Question;
+		});	
+		if (isQuestionId)
+		{
+			return currentQuestion;
+		}
+		return  Question;
   };
 
   
@@ -121,35 +140,35 @@
  });
  
  function nextQuestion() {
-	var currentPage=QuizApp.main.currentPageId;
-	var currentQuestion=QuizApp.main.currentQuestionId;
-
+	var currentQuestion=QuizApp.main.questionCount;
+	var nextQuestion=QuizApp.main.currentQuestionId+QuizApp.main.questionIncrement;
 	var user_answer=$("input[@name=default]:checked").val();
-	var question=getQuestionArray();	
-			
-	if(user_answer===question[currentQuestion-1].answer)
-	{		
-		QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
-	}
-		QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);
-	console.log(QuizApp.main.answerCount);
-
-	if(currentQuestion<10)
-	{
-		QuizApp.main.set('currentQuestionId', currentQuestion+1);		
-		
-	}
+	var question=getQuestionArray(true);	
 	
-	if(QuizApp.main.get('buttonName')==='Submit'){
-		
-		console.log("Your score is "+QuizApp.main.get('answerCount'));
-		alert("Your score is "+QuizApp.main.get('answerCount'));
-		alert("Time taken to complete the test is  "+min+" mins "+sec+" secs");
-		this.$().hide("slow", function() {
-            that.remove();
-        });
-		$('span').html().hide();
+
+	if(QuizApp.main.get('buttonName')==='Submit')
+	{		
+			alert("Your score is "+QuizApp.main.get('answerCount'));
+			alert("Time taken to complete the test is  "+min+" mins "+sec+" secs");
+			this.$().hide("slow", function() {
+				//that.remove();
+			});
+			//$('span').html().hide();
 	}
+	else if(currentQuestion<10)
+	{
+			if(nextQuestion>30)
+			{
+				nextQuestion=nextQuestion-30;
+			}
+			console.log('Next Question : '+nextQuestion);
+			QuizApp.main.set('currentQuestionId', nextQuestion);	
+			if(user_answer===question.answer)
+			{		
+				QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
+			}
+			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);			
+	}		
 	
 	
 	if (currentQuestion+1<=10){
@@ -162,27 +181,36 @@
 		
 }
  
- 
-
 
  QuizApp.Views.start = Em.View.extend({
 	  classNames: ['inputElements'],
 	  tagName: 'button',
 	  click: function () {
 			this.$().hide("slow", function() {
-				that.remove();
+				//that.remove();
 			});
-			startTimer();
+				var randVal = Math.round(Math.random()*30);						
+ 				if (randVal===0)
+	  			{
+					randVal++;
+	  			}
+				QuizApp.main.set('currentQuestionId',randVal);
+				QuizApp.main.set('questionCount',1);
+				console.log('Question Count :'+QuizApp.main.questionCount);
+				console.log('Random Value: '+randVal);
+				startTimer();
+				
 			}
 
  });
  
  function startTimer() {
- 
+ 	
 	$('span').html('00:05');
-	var oldQuestionId=QuizApp.main.currentQuestionId;
+	var oldQuestionId=QuizApp.main.questionCount;
 	setInterval(function() {
-		var currentQuestionId=QuizApp.main.currentQuestionId;
+		//var currentQuestionId=QuizApp.main.currentQuestionId;
+		var currentQuestionId=QuizApp.main.questionCount;
 		if (currentQuestionId!=oldQuestionId) return;
 		
 		var timer = $('span').html();
@@ -191,24 +219,35 @@
 		var seconds = timer[1];
 		
 		if (currentQuestionId>10) return;
+		if(currentQuestionId<=10)
+		{
+			
+				if (seconds== 00 && minutes == 00 ) {
+					if(QuizApp.main.quizSetCount!=11)
+					{
+						nextQuestion();
+					}
+					return;
+				}
 		
-		if (seconds== 0 && minutes == 0) {
-			nextQuestion();
-			return;
+				seconds -= 1;
+				if (minutes < 0) return;
+		
+				if (seconds < 0 && minutes != 0) {
+					minutes -= 1;
+					seconds = 59;
+				}
+				else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
+				if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
+				$('span').html(minutes + ':' + seconds);
+				min=minutes;
+				sec=seconds;
+				if(currentQuestionId===10)
+				{	
+					QuizApp.main.set('quizSetCount',11);
+				}		
+		
 		}
-		
-		seconds -= 1;
-		if (minutes < 0) return;
-		
-		if (seconds < 0 && minutes != 0) {
-			minutes -= 1;
-			seconds = 59;
-		}
-		else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
-		if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
-		$('span').html(minutes + ':' + seconds);
-		min=minutes;
-		sec=seconds;
 	}, 1000);
  }
  
