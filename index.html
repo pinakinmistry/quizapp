@@ -89,7 +89,7 @@
 		
 		<div id="footer">
 				<div id="next">
-				{{#unless QuizApp.main.isSubmitted}}
+				{{#unless QuizApp.main.isLastPage}}
 					{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
 				{{/unless}}
 			  	</div>		
@@ -126,5 +126,6 @@
 	  </div>   
   </body>
 </html>
+
 
 

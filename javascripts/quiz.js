@@ -50,7 +50,8 @@
 			totalQuestion:count.quizSetCount,
 			duration:'00:10',
 			message:'',
-			name:''
+			name:'',
+			isLastPage:true
       });
     }
   });
@@ -114,8 +115,24 @@
 		  tagName: 'button',
 
 		  click: function () {
+		  
+			if(QuizApp.main.get('buttonName')!=='Go to Homepage'){
 				nextQuestion();
-		  }
+			}
+		
+			else if(QuizApp.main.get('buttonName')==='Go to Homepage'){				
+				/*console.log("I am inside the submit");
+				QuizApp.main.set('isSubmitted',true);
+				QuizApp.main.set('isResultDisplayed',true);
+				QuizApp.main.set('isStartPage',false);
+				QuizApp.main.set('isLastPage',true);*/
+				//this.$().hide("slow", function() {			
+					//});
+					window.location.reload();
+				}			
+			}
+		  
+		  
 	  });
 	 
 	  QuizApp.Views.start = Em.View.extend({
@@ -136,9 +153,11 @@
 				console.log('Question Count :'+QuizApp.main.questionCount);
 				console.log('Random Value: '+randVal);
 				//startQuizTimer(); // To be followed up with pinakin
-				startTimer();
+				startTimer();				
 				QuizApp.main.set('isSubmitted',false);
+				QuizApp.main.set('isResultDisplayed',true);
 				QuizApp.main.set('isStartPage',true);
+				QuizApp.main.set('isLastPage',false);
 			}
 			else{
 				if($('#txtName').val().length == 0){
@@ -227,9 +246,10 @@
 	
 
 			if(QuizApp.main.get('buttonName')==='Submit')
-			{					
-					this.$().hide("slow", function() {			
-					});		
+			{		
+
+             
+					
 					getTotalPercentage();
 				    if(QuizApp.main.resultPercentage<50)
 					{
@@ -243,6 +263,9 @@
 					{ 
 						QuizApp.main.set('message','Excellent!');
 					}
+					
+				QuizApp.main.set('buttonName','Go to Homepage');	
+				QuizApp.main.set('isSubmitted',true);	
 			}
 			if(currentQuestion<=count.quizSetCount)
 			{
@@ -258,6 +281,8 @@
 					}
 					QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
 					
+					console.log(QuizApp.main.get('questionCount'));
+					
 			}		
 			//QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
 	
@@ -268,6 +293,9 @@
 			{
 				QuizApp.main.set('buttonName','Submit');
 			}	
+			
+		
+			
 				
 	  }
 	 
@@ -275,7 +303,8 @@
 	  {
 			QuizApp.main.set('isResultDisplayed',false);
 			QuizApp.main.set('isSubmitted',true);			
-			quizStatus.quizOver=true;	
+			quizStatus.quizOver=true;
+			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
 	  }
 
 	 
@@ -374,6 +403,7 @@
 // Enable this to get lots of debugging in the console
 // Ember.LOG_BINDINGS = true
 ;
+
 
 
 

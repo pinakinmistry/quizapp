@@ -16,33 +16,19 @@
 	
  
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
-<<<<<<< HEAD
 		{{#if QuizApp.main.isStartPage}}
-			<div>
-				<h2> {{ name }} </h2>
-				<br />
-				<h4 id="timer">Timer : </h4>
-				<span>00:05</span>
-				<h4> Score : {{ answer }} </h4>
-			</div>
+			{{#if QuizApp.main.isResultDisplayed}}
+				<div>
+					<h2> {{ name }} </h2>
+					<br />
+					<h4 id="timer">Timer : </h4>
+					<span>00:05</span>
+					<h4> Score : {{ answer }} </h4>
+				</div>
+			{{/if}}
 		{{/if}}
-=======
-
-		<div>
-		    <h2> {{ name }} </h2>
-			<br />
-			<h4 id="timer"> </h4>
-			{{#unless QuizApp.main.isSubmitted}}
-				<span>{{QuizApp.main.duration}}</span>
-				<h4> Score : {{ answer }} of {{QuizApp.main.totalQuestion}} </h4>
-			{{/unless}}	
-		</div>
->>>>>>> d29e45eebcba275cd66658edef6bb555859c87d4
-  	
 		<div id="map" class='nonormalMap'>
-		  	
 			{{#unless QuizApp.main.isStartPage}}
-<<<<<<< HEAD
 				<div id="name">
 					<div class="startPageLabel">
 						<b> Name</b>
@@ -71,20 +57,11 @@
 				</br>
 				</br>
 				{{#view QuizApp.Views.start}}<div id='startQuiz'>Start Quiz</div>{{/view}}
-=======
-			
-				<b> Name</b></br>{{view QuizApp.Views.Text}}</br>
-				<b> Difficulty Level: </b> </br>
-				{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-								selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}</br></br>
-				{{#view QuizApp.Views.start}}Start Quiz{{/view}}
->>>>>>> d29e45eebcba275cd66658edef6bb555859c87d4
 			{{/unless}}
 
 			{{#unless QuizApp.main.isSubmitted}}
 				{{#each questions}}
 				  {{#view QuizApp.Views.Question questionBinding="this" }}            
-
 					{{#if pageId}}
 						<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
 
@@ -99,7 +76,7 @@
 			{{/unless}}
 		
 			{{#unless QuizApp.main.isResultDisplayed}}
-				<h5>Result:</h5></br>
+				<h3>Result:</h3></br>
 
 					{{ answer }}  of {{QuizApp.main.totalQuestion}}</br>
 					{{QuizApp.main.resultPercentage}}%</br>
@@ -127,7 +104,13 @@
 			<div id="main_content">
 		 		<div class="center_content">
 					<div class="welcome_block">
-		        		<div class="title"><img src="images/title_welcome.gif" alt="" title="" /></div>
+		        		<div class="title">
+							<img src="images/title_welcome.gif" alt="" title="" />
+							<div id="userName">
+							</div>
+							<div class="emptyDiv">
+							</div>
+						</div>
 						<div class='container-fluid'>
 						  	<div class='row-fluid'>
 								<div class='span12'>

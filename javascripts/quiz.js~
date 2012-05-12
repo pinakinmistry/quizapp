@@ -1,5 +1,5 @@
 (function() {
-
+	
   	window.QuizApp = Ember.Application.create({
     Controllers: Ember.Namespace.create(),
     Models: Ember.Namespace.create(),
@@ -49,11 +49,12 @@
 			selectedLevel:'Select one',
 			totalQuestion:count.quizSetCount,
 			duration:'00:10',
-			message:''
+			message:'',
+			name:''
       });
     }
   });
-
+	
 }).call(this);
 
 (function() {
@@ -118,31 +119,47 @@
 	  });
 	 
 	  QuizApp.Views.start = Em.View.extend({
-		  classNames: ['inputElements'],
+		  classNames: ['startButton'],
 		  tagName: 'button',
 		  click: function () {
-				this.$().hide("slow", function() {			
-				});
-					var randVal = Math.round(Math.random()*count.totalSetCount);						
-	 				if (randVal===0)
-		  			{
-						randVal++;
-		  			}
-					QuizApp.main.set('currentQuestionId',randVal);
-					QuizApp.main.set('questionCount',1);
-					console.log('Question Count :'+QuizApp.main.questionCount);
-					console.log('Random Value: '+randVal);
-					startQuizTimer();
-					startTimer();
-					QuizApp.main.set('isSubmitted',false);
-					QuizApp.main.set('isStartPage',true);
+			  if($('#txtName').val().length > 0 && $('#map select :selected')[0].index > 0){
+				QuizApp.main.set('name',$('#txtName').val());
+				$("#userName").append(QuizApp.main.get('name'));
+				$('.error').hide();
+				var randVal = Math.round(Math.random()*count.totalSetCount);						
+				if (randVal===0)
+				{
+					randVal++;
 				}
+				QuizApp.main.set('currentQuestionId',randVal);
+				QuizApp.main.set('questionCount',1);
+				console.log('Question Count :'+QuizApp.main.questionCount);
+				console.log('Random Value: '+randVal);
+				//startQuizTimer(); // To be followed up with pinakin
+				startTimer();
+				QuizApp.main.set('isSubmitted',false);
+				QuizApp.main.set('isStartPage',true);
+			}
+			else{
+				if($('#txtName').val().length == 0){
+					$('#errName').show("slow");
+				}
+				else{
+					$('#errName').hide("slow");
+				}
+				if($('#map select :selected')[0].index == 0){
+					$('#errLevel').show("slow");
+				}
+				else{
+					$('#errLevel').hide("slow");
+				}
+			}
+		}
 	  });
 
 	  QuizApp.Views.Text = Em.View.extend({
-		 classNames: ['inputElements'],
 		 tagName: 'input',
-		 enabled: true,
+		 enabled: true,		 
 	  });
 
 	  QuizApp.Views.DisabledText = Em.View.extend({
@@ -329,6 +346,12 @@
 		setInterval(function() {	
 			if(quizStatus.quizOver)
 			{
+				if ((totalSec).toString().length < 2)
+					totalSec = '0' + totalSec;
+				
+				if ((totalMin).toString().length < 2)
+					totalMin = '0' + totalMin;
+					
 				QuizApp.main.set('totalTimeTaken',totalMin + ":" + totalSec);
 				return;
 			}
