@@ -11,13 +11,19 @@ a{
 text-decoration:underline;
 color:#ae1600;
 }
+
+
 h1{
+float:right;
+width:300px;
+
 font-family: "Trebuchet MS";
 font-size: 36px;
 color: darkSlateBlue;
 font-weight: bold;
-padding: 5px 0 5px 250px;
-margin: 0px;
+width:50%;
+margin-bottom:50px;
+
 }
 .clear{
 clear:both;
@@ -46,6 +52,7 @@ background:url(images/header_bg.jpg) no-repeat center top;
 width:677px;
 height:173px;
 margin:auto;
+
 }
 .logo{
 padding:15px 0 0 100px;
@@ -91,8 +98,10 @@ margin:auto;
 background:url(images/container_center_bg.jpg) repeat-y center;
 }
 .center_content{
+position:absolute;
 width:787px;
 background:url(images/container_top_bg.jpg) no-repeat center top;
+
 }
 .welcome_block{
 width:90%;

@@ -16,6 +16,8 @@ body {
 .container-fluid{
 
 }
+
+
 .next-tier-view{
 background-color: '';
 }
@@ -96,4 +98,12 @@ float: right;
 
 .emptyDiv{
 clear: both;
+}
+#image-announcement{
+float:left;
+background:url(images/quiz.jpg) no-repeat left top;
+margin-left:100px;
+width:90px;
+height:90px;
+background-repeat:no-repeat;
 }
