@@ -23,14 +23,14 @@
 			{{#if QuizApp.main.isResultDisplayed}}
 				<div>
 					<h2> {{ name }} </h2>
-					<br />
+					<br>
 					<h4 id="timer">Timer :  </h4>
-					<span>{{QuizApp.main.duration}}</span>
+					<span id="timerValue">{{QuizApp.main.duration}}</span>
 					<h4> Score : {{ answer }} of {{QuizApp.main.totalQuestion}} </h4>
 				</div>
 			{{/if}}
 		{{/if}}
-		<div id="map" class='nonormalMap'>
+		<div id="quiz" class='quizClass'>
 			{{#unless QuizApp.main.isStartPage}}
 				<div id="name">
 					<div class="startPageLabel">
@@ -42,7 +42,7 @@
 					<div class="errorLabels">
 						<label class="error" id="errName">Please enter name</label>
 					</div>
-					</br>
+					<br>
 				</div>
 				<div>
 					<div class="startPageLabel">
@@ -57,8 +57,8 @@
 						<label class="error" id="errLevel">Please select a difficulty level</label>
 					</div>
 				</div>
-				</br>
-				</br>
+				<br>
+				<br>
 				{{#view QuizApp.Views.start}}<div id='startQuiz'>Start Quiz</div>{{/view}}
 			{{/unless}}
 
@@ -79,21 +79,21 @@
 			{{/unless}}
 		
 			{{#unless QuizApp.main.isResultDisplayed}}
-				<h3>Result:</h3></br>
+				<h3>Result:</h3><br>
 
-					{{ answer }}  of {{QuizApp.main.totalQuestion}}</br>
-					{{QuizApp.main.resultPercentage}}%</br>
+					<b>{{ answer }}</b>  of {{QuizApp.main.totalQuestion}}<br>
+					<b>{{QuizApp.main.resultPercentage}}%</b><br>
 
-					{{summaryMessage}}</br>
+					{{summaryMessage}}<br>
 
-					Time Spent :{{timeTaken}}
+					Time Spent : <b>{{timeTaken}}</b>
 			{{/unless}}
 		</div>	
 		
 		<div id="footer">
 				<div id="next">
 				{{#unless QuizApp.main.isLastPage}}
-					{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
+					{{#view QuizApp.Views.Next }}<div id="nextButton">{{QuizApp.main.buttonName}}</div>{{/view}}
 				{{/unless}}
 			  	</div>		
 		</div>
