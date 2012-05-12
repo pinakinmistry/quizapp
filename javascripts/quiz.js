@@ -7,6 +7,7 @@
     Views: Ember.Namespace.create(),
     Data: Ember.Namespace.create(),
     
+
 	ready: function() {
       return this.initQuizApp();
     },
@@ -152,8 +153,13 @@
 				QuizApp.main.set('questionCount',1);
 				console.log('Question Count :'+QuizApp.main.questionCount);
 				console.log('Random Value: '+randVal);
+
 				//startQuizTimer(); // To be followed up with pinakin
-				startTimer();				
+				//startTimer();				
+
+				startQuizTimer();
+				startTimer();
+
 				QuizApp.main.set('isSubmitted',false);
 				QuizApp.main.set('isResultDisplayed',true);
 				QuizApp.main.set('isStartPage',true);
