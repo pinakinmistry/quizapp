@@ -16,14 +16,13 @@ color:#ae1600;
 h1{
 float:right;
 width:300px;
-
 font-family: "Trebuchet MS";
-font-size: 36px;
+font-size: 34px;
 color: darkSlateBlue;
 font-weight: bold;
-width:50%;
+width:70%;
 margin-bottom:50px;
-
+margin-top:10px;
 }
 .clear{
 clear:both;
