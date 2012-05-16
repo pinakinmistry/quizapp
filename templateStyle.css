@@ -1,0 +1,251 @@
+body
+{
+background:url(images/bg.jpg) repeat-x top #1a2858;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+margin:0px auto auto auto;
+color:#0d294f;
+}
+a{
+text-decoration:underline;
+color:#ae1600;
+}
+h1{
+font-size:14px;
+color:#ae1600;
+font-weight:bold;
+padding:5px 0 5px 0;
+margin:0px;
+}
+.clear{
+clear:both;
+}
+span{
+color:#b77a09;
+}
+p{
+text-align:justify;
+line-height:17px;
+padding:6px 0 6px 0;
+margin:0px;
+}
+img.prod_img{
+float:left;
+padding:5px 10px 0 0;
+}
+#main_container{
+width:960px;
+height:auto;
+margin:auto;
+padding:0px;
+background:url(images/header_bg.jpg) no-repeat center top;
+}
+#header{
+width:677px;
+height:173px;
+margin:auto;
+}
+.logo{
+padding:15px 0 0 100px;
+}
+
+/*---------------- menu tab----------------------*/
+#menu_tab{
+width:550px;
+height:28px;
+padding:0 0 0 225px;
+}
+
+ul.menu {
+list-style-type:none; display:block;
+ margin: auto; padding:0px; background:none;}
+
+ul.menu li {
+display:inline;
+font-size:13px;
+font-weight:bold;
+font-style:italic;
+line-height:28px;}
+
+a.nav:link, a.nav:visited {
+display:block; float:left; padding:0px;width:122px; height:28px; margin:0px 5px 0px 5px; text-align:center;
+text-decoration:none; background:url(images/bt.gif); color:#313537;}
+
+a.nav_selected:link, a.nav_selected:visited {
+display:block; float:left; padding:0px;width:122px; height:28px;margin:0px 5px 0px 5px;text-align:center;
+text-decoration:none; background:url(images/bt_a.gif);color: #313537;}
+
+a.nav:hover {
+color: #313537; text-decoration:none; background:url(images/bt_a.gif);}
+
+
+/*----------------main_content----------------*/
+#main_content{
+width:787px;
+clear:both;
+height:380px;
+margin:auto;
+/*background: url(images/container_top_bg.jpg) no-repeat center top;*/
+background:url(images/container_center_bg.jpg) repeat-y center;
+}
+.center_content{
+width:787px;
+background:url(images/container_top_bg.jpg) no-repeat center top;
+}
+.welcome_block{
+width:500px;
+padding:20px 0 0 40px;
+}
+.title{
+clear:both;
+border-bottom:1px dashed #808dbb;
+padding:0 0 5px 0;
+margin-top: 20px;
+
+}
+.i_divider{
+width:1px;
+height:67px;
+float:left;
+padding:0 15px 0 15px;
+background:url(images/i_divider.gif) no-repeat center;
+}
+.products{
+width:650px;
+padding:20px 40px 0 40px;
+}
+.categories_products{
+padding:20px 40px 0 40px;
+}
+.products_box{
+padding:15px 0 15px 0;
+}
+
+.new_products{
+width:710px;
+padding:0 10px 30px 40px;
+}
+.prod_box{
+float:left;
+padding:10px 10px 10px 15px;
+}
+.prod_details{
+float:left;
+width:220px;
+padding:0 0 0 10px;
+}
+.store_details{
+float:left;
+width:320px;
+padding:0 0 0 10px;
+}
+.welcome_details{
+float:left;
+width:370px;
+padding:0 0 0 20px;
+}
+.contact_details{
+float:left;
+width:320px;
+padding:0 0 0 10px;
+}
+a.order{
+float:right;
+padding:5px 0 0 0;
+}
+/*---------------------pagination-----------------------------*/
+
+div.pagination {
+padding:20px 0 20px 230px;
+margin:5px;
+text-align:center;
+float:left;
+font-size:10px;
+}
+
+div.pagination a {
+padding: 2px 5px 2px 5px;
+margin-right: 2px;
+border: 1px solid #ddd;
+
+text-decoration: none; 
+color: #642403;
+}
+div.pagination a:hover, div.pagination a:active {
+border:1px solid #ddd;
+color: #642403;
+background-color: #f4d583;
+}
+div.pagination span.current {
+padding: 2px 5px 2px 5px;
+margin-right: 2px;
+border: 1px solid #ddd;
+font-weight: bold;
+background-color: #f4d583;
+color: #642403;
+}
+div.pagination span.disabled {
+padding: 2px 5px 2px 5px;
+margin-right: 2px;
+border: 1px solid #ddd;
+color: #ccc;
+}
+/*------contact form------*/
+#contact_form{
+float:left;
+width:300px;
+padding:10px 10px 0 140px;
+color:#666666;
+}
+.contact_input{
+width:290px;
+height:17px;
+font-size:12px;
+float:left;
+background-color:#fff8dc;
+border:1px #DAB75A solid;
+}
+label.contact_form{
+width:200px;
+padding:0 0 5px 0;
+font-size:12px;
+}
+.contact_textarea{
+width:290px;
+height:80px;
+font-size:12px;
+font-family:Arial, Helvetica, sans-serif;
+float:left;
+background-color:#fff8dc;
+border:1px #DAB75A solid;
+}
+input.contact_submit{
+float:right;
+padding:10px;
+}
+.cleardiv {
+clear:both;
+overflow:hidden;
+height:4px;
+}
+
+/*----footer---------*/
+#footer{
+width:787px;
+height:58px;
+background:url(images/footer_bg.jpg) no-repeat center;
+clear:both;
+padding:0px;
+margin:auto;
+text-align:center;
+color:#999999;
+}
+.left_footer{
+float:left;
+padding:7px 0 0 35px;
+}
+.right_footer{
+float:right;
+padding:15px 40px 0 0;
+}
