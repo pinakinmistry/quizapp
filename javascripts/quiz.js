@@ -73,8 +73,7 @@
 			{
 				questionsTemp.content.removeObject(questionsTemp.content[i]);
 			}
-		}
-		
+		}		
 		
 		this.set('questions', questionsTemp);			
 		
@@ -95,8 +94,6 @@
   };
 
   
- 
-
   QuizApp.Views.App = Ember.View.extend({
     nameBinding: 'QuizApp.config.name',
     mainBinding: 'QuizApp.main',
@@ -119,30 +116,23 @@
 	buttonNameBinding:'QuizApp.main.buttonName'
   });
 
-  QuizApp.Views.Quiz = Ember.View.extend({
-    mainBinding: 'QuizApp.main',
-    templateName: 'app/templates/quiz'
-  });
-  
-  
-
   QuizApp.Views.Next = Em.View.extend({
-  classNames: ['next-tier-view'],
-  tagName: 'button',
-  click: function () {
-	var currentPage=QuizApp.main.currentPageId;
+	  classNames: ['next-tier-view'],
+	  tagName: 'button',
+	  click: function () {
+		var currentPage=QuizApp.main.currentPageId;
 	
-	if(currentPage<4)
-	{
-		QuizApp.main.set('currentPageId', currentPage+1);		
-	}
-	if(currentPage==3)
-	{
-		QuizApp.main.set('buttonName','Submit');
-	}
-    
-  }
-});
+		if(currentPage<4)
+		{
+			QuizApp.main.set('currentPageId', currentPage+1);		
+		}
+		if(currentPage==3)
+		{
+			QuizApp.main.set('buttonName','Submit');
+		}
+		
+	  }
+ });
 
 
 Ember.RadioButton = Ember.View.extend({
@@ -153,7 +143,7 @@ Ember.RadioButton = Ember.View.extend({
 
   classNames: ['ember-radio-button'],
 
-  defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" checked="checked"}} />&nbsp&nbsp{{title}}'),
+  defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" 			checked="checked"}} />&nbsp&nbsp{{title}}'),
 
   bindingChanged: function(){
   // if(this.get("option") == get(this, 'value')){
@@ -170,15 +160,6 @@ Ember.RadioButton = Ember.View.extend({
   //  set(this, 'value', input.attr('value'));
   }
 });
-
-QuizApp.Models.qqq = Ember.Object.extend({
-    species : 'hello'
-});
-
-QuizApp.Models.controller = Ember.Object.create({
-    content : QuizApp.Models.qqq.create()
-});
-
 
 
 }).call(this);
