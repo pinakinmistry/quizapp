@@ -13,11 +13,11 @@
     initQuizApp: function() {
       var questions, questionsArray, difficultyLevels;
 	  
-      questions = this.Data.questions.map(function(question) {
-		if(question.pageId===1)
-		{
-			return QuizApp.Models.Question.create(question);
-		}
+      questions = this.Data.questions.map(function(question) {		
+			if(question.questionId===1)
+			{
+				return QuizApp.Models.Question.create(question);
+			}
       });
       questionsArray = QuizApp.Models.Questions.create({
         content: questions
@@ -31,7 +31,10 @@
         selectedLevel: '',
         //currentQuestion: questionsArray.randomQuestion()
 		currentPageId:1	,
-		buttonName:'Next Page'
+		buttonName:'Next Page',
+		currentQuestionId:1,
+	answerCount:0,
+	questionCount:0
       });
     }
   });
@@ -60,37 +63,23 @@
 
   QuizApp.Controllers.Main = Ember.Object.extend({
 	getNextQuestions: (function() {
-		var questionsTemp;	
-		var questions=getQuestionArray();
-		var selectedPageId=this.currentPageId;
-		var selectedLevel=QuizApp.main.get('selectedLevel');	  
-		var length=questions.content.length;			
-		questionsTemp=getQuestionArray();
-			
-		for(i=length-1;i>=0;i--)
-		{
-			if(questions.content[i].pageId!=selectedPageId || questions.content[i].difficultyLevel!=selectedLevel)
-			{
-				questionsTemp.content.removeObject(questionsTemp.content[i]);
-			}
-		}		
 		
-		this.set('questions', questionsTemp);			
+		this.set('questions',getQuestionArray());			
 		
 		return this.get('questions');
-    }).observes('currentPageId','selectedLevel')
+    }).observes('currentQuestionId','selectedLevel')
   });
   
   function getQuestionArray()
-  {
-	var question,questionArray;
-		question = QuizApp.Data.questions.map(function(Question) {
-        return QuizApp.Models.Question.create(Question);
-      });
-	    questionArray = QuizApp.Models.Questions.create({
-        content: question
-      });
-	 return  questionArray;
+  {	
+		var Question;
+		Question = QuizApp.Data.questions.map(function(question) {
+			if(QuizApp.main.currentQuestionId===question.questionId)
+			{
+				return QuizApp.Models.Question.create(question);
+			}
+      });	   
+	 return  Question;
   };
 
   
@@ -113,24 +102,38 @@
 	optionsBinding: 'question.options',
 	pageIdBinding:'question.pageId',
 	questionIdBinding:'question.questionId',
-	buttonNameBinding:'QuizApp.main.buttonName'
+	buttonNameBinding:'QuizApp.main.buttonName',
+	currentQuestionIdBinding:'main.currentQuestionId'
   });
+
+
 
   QuizApp.Views.Next = Em.View.extend({
 	  classNames: ['next-tier-view'],
 	  tagName: 'button',
+
 	  click: function () {
 		var currentPage=QuizApp.main.currentPageId;
-	
-		if(currentPage<4)
-		{
-			QuizApp.main.set('currentPageId', currentPage+1);		
+		var currentQuestion=QuizApp.main.currentQuestionId;
+
+		var user_answer=$("input[@name=default]:checked").val();
+		var question=getQuestionArray();	
+				
+		if(user_answer===question[currentQuestion-1].answer)
+		{		
+			QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
 		}
-		if(currentPage==3)
+			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);
+		console.log(QuizApp.main.answerCount);
+
+		if(currentQuestion<10)
+		{
+			QuizApp.main.set('currentQuestionId', currentQuestion+1);		
+		}
+		if(currentQuestion===9)
 		{
 			QuizApp.main.set('buttonName','Submit');
-		}
-		
+		}		
 	  }
  });
  
@@ -152,29 +155,29 @@
 
 
 Ember.RadioButton = Ember.View.extend({
-  title: null,
-  checked: false,
-  group: "radio_button",
-  disabled: false,
+	title: null,
+	checked: false,
+	group: "radio_button",
+	disabled: false,
 
-  classNames: ['ember-radio-button'],
+	classNames: ['ember-radio-button'],
 
-  defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" 			checked="checked"}} />&nbsp&nbsp{{title}}'),
+	defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" 			checked="checked"}} />&nbsp&nbsp{{title}}'),
 
-  bindingChanged: function(){
-  // if(this.get("option") == get(this, 'value')){
-  //     this.set("checked", true);
-  //  }
-  }.observes("value"),
-    
-  change: function() {
-    Ember.run.once(this, this._updateElementValue);
-  },
+	bindingChanged: function(){
+	  // if(this.get("option") == get(this, 'value')){
+	  //     this.set("checked", true);
+	  //  }
+	}.observes("value"),
+		
+	change: function() {
+		Ember.run.once(this, this._updateElementValue);
+	},
 
-  _updateElementValue: function() {
-  //  var input = this.$('input:radio');
-  //  set(this, 'value', input.attr('value'));
-  }
+	_updateElementValue: function() {
+	  //  var input = this.$('input:radio');
+	  //  set(this, 'value', input.attr('value'));
+	}
 });
 
 
@@ -184,4 +187,5 @@ Ember.RadioButton = Ember.View.extend({
 // Enable this to get lots of debugging in the console
 // Ember.LOG_BINDINGS = true
 ;
+
 

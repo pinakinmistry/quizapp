@@ -18,19 +18,15 @@
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
       <div>
         <h2> {{ name }} </h2>
-		<b> Difficulty Level: </b> 
-		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-							selectionBinding="QuizApp.main.selectedLevel"}}
-		{{view QuizApp.Views.Quiz questionsBinding="questions"}}
+		
+			
       </div>
-    </script>
-
-    <script type ="text/x-handlebars" data-template-name="app/templates/quiz">
+  
       <div id="map" class='nonormalMap'>
         {{#each questions}}
           {{#view QuizApp.Views.Question questionBinding="this" }}            
 		{{#if pageId}}
-			<h3> Q {{questionId}}. {{questionText}} </h3>
+			<h3> Q {{QuizApp.main.currentQuestionId}}. {{questionText}} </h3>
 				{{#each options}}
 					{{view Em.RadioButton  title=option valueBinding="QuizApp.Models.controller"}}
 				{{/each}}          
@@ -51,8 +47,7 @@
       <div class='row-fluid'>
         <div class='span12'>
           <script type='text/x-handlebars'>
-            {{view QuizApp.Views.App}}
-			
+            {{view QuizApp.Views.App}}			
           </script>
         </div>
       </div>
