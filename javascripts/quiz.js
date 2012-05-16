@@ -329,6 +329,12 @@
 		setInterval(function() {	
 			if(quizStatus.quizOver)
 			{
+				if ((totalSec).toString().length < 2)
+					totalSec = '0' + totalSec;
+				
+				if ((totalMin).toString().length < 2)
+					totalMin = '0' + totalMin;
+					
 				QuizApp.main.set('totalTimeTaken',totalMin + ":" + totalSec);
 				return;
 			}
