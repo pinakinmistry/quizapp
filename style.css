@@ -14,10 +14,23 @@ height: 480px;
 width: 49.8%;
 margin:10px auto;
 padding: 60px;
-
 }
 .next-tier-view{
 background-color: '';
 
 float:right;
+}
+
+#details{
+float: left;
+width: 20%;
+}
+
+#map{
+float: right;
+width: 75%
+}
+
+.inputElements{
+width: 80%;
 }
