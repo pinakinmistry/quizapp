@@ -135,7 +135,7 @@
 				QuizApp.main.set('questionCount',1);
 				console.log('Question Count :'+QuizApp.main.questionCount);
 				console.log('Random Value: '+randVal);
-				//startQuizTimer(); // To be followed up with pinakin
+				startQuizTimer();
 				startTimer();
 				QuizApp.main.set('isSubmitted',false);
 				QuizApp.main.set('isStartPage',true);
