@@ -17,13 +17,14 @@
  
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
 
-      <div>
+    <div>
         <h2> {{ name }} </h2>
 		<br>
 			<b>Timer : </b>
-		<span>1:00</span><h4> Score :	{{ answer }} </h4>
-</div>
-    <div id="details">
+		<span>00:05</span><h4> Score :	{{ answer }} </h4>
+	</div>
+    
+	<div id="details">
 		<b> Name</b>
 		{{view QuizApp.Views.Text}}
 		<b>Employee Id</b>
@@ -33,7 +34,7 @@
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
 							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}		
-{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
+		{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
 
       </div>
   

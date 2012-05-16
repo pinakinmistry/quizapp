@@ -116,31 +116,38 @@
 	  tagName: 'button',
 
 	  click: function () {
-		var currentPage=QuizApp.main.currentPageId;
-		var currentQuestion=QuizApp.main.currentQuestionId;
-
-		var user_answer=$("input[@name=default]:checked").val();
-		var question=getQuestionArray();	
-				
-		if(user_answer===question[currentQuestion-1].answer)
-		{		
-			QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
-		}
-			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);
-		console.log(QuizApp.main.answerCount);
-
-		if(currentQuestion<10)
-		{
-			QuizApp.main.set('currentQuestionId', currentQuestion+1);		
-		}
-		if(currentQuestion===9)
-		{
-			QuizApp.main.set('buttonName','Submit');
-		}		
+			nextQuestion();
 	  }
-	
-	  
  });
+ 
+ function nextQuestion() {
+	var currentPage=QuizApp.main.currentPageId;
+	var currentQuestion=QuizApp.main.currentQuestionId;
+
+	var user_answer=$("input[@name=default]:checked").val();
+	var question=getQuestionArray();	
+			
+	if(user_answer===question[currentQuestion-1].answer)
+	{		
+		QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
+	}
+		QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);
+	console.log(QuizApp.main.answerCount);
+
+	if(currentQuestion<10)
+	{
+		QuizApp.main.set('currentQuestionId', currentQuestion+1);		
+		
+	}
+	if (currentQuestion+1<=10){
+		startTimer();
+	}
+	if(currentQuestion===9)
+	{
+		QuizApp.main.set('buttonName','Submit');
+	}
+		
+}
  
  
 
@@ -148,32 +155,43 @@
  QuizApp.Views.start = Em.View.extend({
 	  classNames: ['inputElements'],
 	  tagName: 'button',
-
 	  click: function () {
-	  	  setInterval(function() {
-    var timer = $('span').html();
-    timer = timer.split(':');
-    var minutes = timer[0];
-    var seconds = timer[1];
-    seconds -= 1;
-    if (minutes < 0) return;
-    
-    if (seconds < 0 && minutes != 0) {
-        minutes -= 1;
-        seconds = 59;
-    }
-    else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
-    if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
-    $('span').html(minutes + ':' + seconds);
-}, 1000);
-
-
-
-			  }
-	
-	  
+			startTimer();
+			}
  });
  
+ function startTimer() {
+ 
+	$('span').html('00:05');
+	var oldQuestionId=QuizApp.main.currentQuestionId;
+	setInterval(function() {
+		var currentQuestionId=QuizApp.main.currentQuestionId;
+		if (currentQuestionId!=oldQuestionId) return;
+		
+		var timer = $('span').html();
+		timer = timer.split(':');
+		var minutes = timer[0];
+		var seconds = timer[1];
+		
+		if (currentQuestionId>10) return;
+		
+		if (seconds== 0 && minutes == 0) {
+			nextQuestion();
+			return;
+		}
+		
+		seconds -= 1;
+		if (minutes < 0) return;
+		
+		if (seconds < 0 && minutes != 0) {
+			minutes -= 1;
+			seconds = 59;
+		}
+		else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
+		if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
+		$('span').html(minutes + ':' + seconds);
+	}, 1000);
+ }
  
 
 
