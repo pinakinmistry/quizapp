@@ -62,24 +62,24 @@
 	getNextQuestions: (function() {
 		var questionsTemp;	
 		var questions=getQuestionArray();
-		var selectedPageId=this.currentPageId;	  
+		var selectedPageId=this.currentPageId;
+		var selectedLevel=QuizApp.main.get('selectedLevel');	  
 		var length=questions.content.length;			
 		questionsTemp=getQuestionArray();
 			
 		for(i=length-1;i>=0;i--)
 		{
-			if(questions.content[i].pageId!=selectedPageId)
+			if(questions.content[i].pageId!=selectedPageId || questions.content[i].difficultyLevel!=selectedLevel)
 			{
 				questionsTemp.content.removeObject(questionsTemp.content[i]);
 			}
 		}
 		
-		if(questionsTemp.content.length>0)
-		{
-			this.set('questions', questionsTemp);			
-		}
+		
+		this.set('questions', questionsTemp);			
+		
 		return this.get('questions');
-    }).observes('currentPageId')
+    }).observes('currentPageId','selectedLevel')
   });
   
   function getQuestionArray()
