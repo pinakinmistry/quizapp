@@ -39,7 +39,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId":1,
-    "questionId":1
+    "questionId":4
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile? (Med)",
@@ -50,7 +50,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId":1,
-  	"questionId":2
+  	"questionId":5
   },
   {
     "question": "Can you develop a quiz app using Java EE? (Med)",
@@ -60,7 +60,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 2,
     "pageId":1,
-	"questionId":3
+	"questionId":6
   },
   {
     "question": "Can you develop a quiz app using Ember.js? (High)",
@@ -70,7 +70,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId":1,
-    "questionId":1
+    "questionId":7
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile? (High)",
@@ -81,7 +81,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId":1,
-  	"questionId":2
+  	"questionId":8
   },
   {
     "question": "Can you develop a quiz app using Java EE? (High)",
@@ -91,7 +91,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 2,
     "pageId":1,
-	"questionId":3
+	"questionId":9
   },
   {
     "question": "Can you develop a quiz app using ASP.NET? (Low)",
@@ -102,7 +102,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 2,
-    "questionId":4
+    "questionId":10
   },
   {
     "question": "Can you develop a quiz app using RoR? (Low)",
@@ -114,7 +114,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 2,
-    "questionId":5
+    "questionId":11
   },
 {
     "question": "Can you develop a quiz app using Ember.js? (Low)",
@@ -124,7 +124,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId":2,
-    "questionId":6
+    "questionId":12
   },
     {
     "question": "Can you develop a quiz app using ASP.NET? (Med)",
@@ -135,7 +135,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 2,
-    "questionId":4
+    "questionId":13
   },
   {
     "question": "Can you develop a quiz app using RoR? (Med)",
@@ -147,7 +147,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 2,
-    "questionId":5
+    "questionId":14
   },
 {
     "question": "Can you develop a quiz app using Ember.js? (Med)",
@@ -157,7 +157,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId":2,
-    "questionId":6
+    "questionId":15
   },
     {
     "question": "Can you develop a quiz app using ASP.NET? (High)",
@@ -168,7 +168,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 2,
-    "questionId":4
+    "questionId":16
   },
   {
     "question": "Can you develop a quiz app using RoR? (High)",
@@ -180,7 +180,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 2,
-    "questionId":5
+    "questionId":17
   },
 {
     "question": "Can you develop a quiz app using Ember.js? (High)",
@@ -190,7 +190,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId":2,
-    "questionId":6
+    "questionId":18
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile? (Low)",
@@ -201,7 +201,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId":3,
-  	"questionId":7
+  	"questionId":19
   },
   {
     "question": "Can you develop a quiz app using Java EE? (Low)",
@@ -211,7 +211,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 2,
     "pageId":3,
-	"questionId":8
+	"questionId":20
   },
   {
     "question": "Can you develop a quiz app using ASP.NET? (Low)",
@@ -222,7 +222,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 3,
-    "questionId":9
+    "questionId":21
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile? (Med)",
@@ -233,7 +233,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId":3,
-  	"questionId":7
+  	"questionId":22
   },
   {
     "question": "Can you develop a quiz app using Java EE? (Med)",
@@ -243,7 +243,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 2,
     "pageId":3,
-	"questionId":8
+	"questionId":23
   },
   {
     "question": "Can you develop a quiz app using ASP.NET? (Med)",
@@ -254,7 +254,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 3,
-    "questionId":9
+    "questionId":24
   },
   {
     "question": "Can you develop a quiz app using jQuery Mobile? (High)",
@@ -265,7 +265,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId":3,
-  	"questionId":7
+  	"questionId":25
   },
   {
     "question": "Can you develop a quiz app using Java EE? (High)",
@@ -275,7 +275,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 2,
     "pageId":3,
-	"questionId":8
+	"questionId":26
   },
   {
     "question": "Can you develop a quiz app using ASP.NET? (High)",
@@ -286,7 +286,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 0,
     "pageId": 3,
-    "questionId":9
+    "questionId":27
   },
   {
     "question": "Can you develop a quiz app using RoR? (Low)",
@@ -298,7 +298,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 4,
-    "questionId":10
+    "questionId":28
   },
   {
     "question": "Can you develop a quiz app using RoR? (Med)",
@@ -310,7 +310,7 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 4,
-    "questionId":10
+    "questionId":29
   },
   {
     "question": "Can you develop a quiz app using RoR? (High)",
@@ -322,8 +322,9 @@ QuizApp.Data.questions = [
 				],
     "answer": 1,
     "pageId": 4,
-    "questionId":10
+    "questionId":30
   }
 ];
+
 
 
