@@ -245,8 +245,7 @@
 				if(currentQuestionId===10)
 				{	
 					QuizApp.main.set('quizSetCount',11);
-				}
-			
+				}		
 		
 		}
 	}, 1000);

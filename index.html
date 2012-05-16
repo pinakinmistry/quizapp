@@ -42,7 +42,7 @@
         {{#each questions}}
           {{#view QuizApp.Views.Question questionBinding="this" }}            
 		{{#if pageId}}
-			<h3> Q {{QuizApp.main.currentQuestionId}}. {{questionText}} </h3>
+			<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>
 				
 
 {{#each options}}
