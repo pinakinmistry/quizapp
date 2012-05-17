@@ -33,9 +33,7 @@
 	  console.log('Incrementor :'+randIncrement);	
 	  return this.main = QuizApp.Controllers.Main.create({
         questions: questionsArray,
-        difficultyLevels: difficultyLevels,
-        selectedLevel: '',
-        //currentQuestion: questionsArray.randomQuestion()
+        difficultyLevels: difficultyLevels,       
 		currentPageId:1	,
 		buttonName:'Next Page',
 		buttonStart:'Start Quiz',
@@ -44,9 +42,11 @@
 		questionCount:0,
 		questionIncrement:randIncrement,
 		quizSetCount:0,
+		quizOver:false,
 		isSubmitted:true,
 		isResultDisplayed:true,
-		isStartPage:false
+		isStartPage:false,
+		resultPercentage:0
       });
     }
   });
@@ -79,7 +79,7 @@
 		this.set('questions',getQuestionArray(false));			
 		
 		return this.get('questions');
-    }).observes('currentQuestionId','selectedLevel')
+    }).observes('currentQuestionId')
   });
   
  function getQuestionArray(isQuestionId)
@@ -110,8 +110,7 @@
     answerBinding:'QuizApp.main.answerCount',
     nameBinding: 'QuizApp.config.name',
     mainBinding: 'QuizApp.main',
-    questionsBinding: 'main.questions',
-    //currentQuestionBinding: 'main.currentQuestion',
+    questionsBinding: 'main.questions',  
     difficultyLevelsBinding: 'main.difficultyLevels',
     selectedLevelBinding: 'main.selectedLevel',
     templateName: 'app/templates/app'
@@ -122,7 +121,7 @@
   QuizApp.Views.Question = Ember.View.extend({
     questionTextBinding: 'question.questionText',
 	difficultyLevelBinding: 'question.difficultyLevel',
-	answerBinding: 'question.answer',
+	//answerBinding: 'question.answer',
 	optionsBinding: 'question.options',
 	pageIdBinding:'question.pageId',
 	questionIdBinding:'question.questionId',
@@ -153,15 +152,12 @@
 	{		
 			alert("Your score is "+QuizApp.main.get('answerCount'));
 			alert("Time taken to complete the test is  "+min+" mins "+sec+" secs");
-			this.$().hide("slow", function() {
-				//that.remove();
-			});
-			//$('span').html().hide();
-			QuizApp.main.set('isResultDisplayed',false);
-			QuizApp.main.set('isSubmitted',true);	
+			this.$().hide("slow", function() {			
+			});		
+			getTotalPercentage();
 						
 	}
-	else if(currentQuestion<10)
+	else if(currentQuestion<=10)
 	{
 			if(nextQuestion>30)
 			{
@@ -187,13 +183,19 @@
 		
 }
  
+function getTotalPercentage()
+{
+	QuizApp.main.set('isResultDisplayed',false);
+	QuizApp.main.set('isSubmitted',true);	
+	QuizApp.main.set('quizOver',true);
+	QuizApp.main.set('resultPercentage',Math.round(QuizApp.main.answerCount*10));	
+}
 
  QuizApp.Views.start = Em.View.extend({
 	  classNames: ['inputElements'],
 	  tagName: 'button',
 	  click: function () {
-			this.$().hide("slow", function() {
-				//that.remove();
+			this.$().hide("slow", function() {			
 			});
 				var randVal = Math.round(Math.random()*30);						
  				if (randVal===0)
@@ -215,8 +217,10 @@
  	
 	$('span').html('00:05');
 	var oldQuestionId=QuizApp.main.questionCount;
-	setInterval(function() {
-		//var currentQuestionId=QuizApp.main.currentQuestionId;
+	setInterval(function() {	
+		if(QuizApp.main.quizOver)
+			return;
+
 		var currentQuestionId=QuizApp.main.questionCount;
 		if (currentQuestionId!=oldQuestionId) return;
 		
@@ -233,6 +237,10 @@
 					if(QuizApp.main.quizSetCount!=11)
 					{
 						nextQuestion();
+					}
+					else
+					{						
+						getTotalPercentage();				
 					}
 					return;
 				}
@@ -287,21 +295,7 @@ Ember.RadioButton = Ember.View.extend({
 	classNames: ['ember-radio-button'],
 
 	defaultTemplate: Ember.Handlebars.compile('<input type="radio" {{ bindAttr disabled="disabled" name="group" value="option" 			checked="checked"}} />&nbsp&nbsp{{title}}'),
-
-	bindingChanged: function(){
-	  // if(this.get("option") == get(this, 'value')){
-	  //     this.set("checked", true);
-	  //  }
-	}.observes("value"),
-		
-	change: function() {
-		Ember.run.once(this, this._updateElementValue);
-	},
-
-	_updateElementValue: function() {
-	  //  var input = this.$('input:radio');
-	  //  set(this, 'value', input.attr('value'));
-	}
+	
 });
 
 

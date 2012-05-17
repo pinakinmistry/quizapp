@@ -3,10 +3,10 @@ QuizApp.Data.questions = [
   {
     "question": "Can you develop a quiz app using Ember.js (Low)?",
 	"difficultyLevel": "low",
-    "options": [ {"option": "Yes"},
+    "options": [ {"option": "Can you develop a quiz app using Ember.js"},
 				 {"option": "No"}
 				],
-    "answer": "Yes",
+    "answer": "Can you develop a quiz app using Ember.js",
     "pageId":1,
     "questionId":1
   },
@@ -324,6 +324,7 @@ QuizApp.Data.questions = [
     "pageId": 4,
     "questionId":30
   }
+
 ];
 
 
