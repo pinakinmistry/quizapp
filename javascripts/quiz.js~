@@ -149,15 +149,12 @@
 	
 
 	if(QuizApp.main.get('buttonName')==='Submit')
-	{		
-			alert("Your score is "+QuizApp.main.get('answerCount'));
-			alert("Time taken to complete the test is  "+min+" mins "+sec+" secs");
+	{					
 			this.$().hide("slow", function() {			
 			});		
-			getTotalPercentage();
-						
+			getTotalPercentage();			
 	}
-	else if(currentQuestion<10)
+	if(currentQuestion<=10)
 	{
 			if(nextQuestion>30)
 			{
@@ -169,9 +166,10 @@
 			{		
 				QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
 			}
-			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);			
+			QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
+					
 	}		
-	
+	QuizApp.main.set('resultPercentage',Math.round(QuizApp.main.answerCount*10));
 	
 	if (currentQuestion+1<=10){
 		startTimer();
@@ -187,8 +185,7 @@ function getTotalPercentage()
 {
 	QuizApp.main.set('isResultDisplayed',false);
 	QuizApp.main.set('isSubmitted',true);	
-	QuizApp.main.set('quizOver',true);
-	QuizApp.main.set('resultPercentage',Math.round(QuizApp.main.answerCount*10));	
+	QuizApp.main.set('quizOver',true);		
 }
 
  QuizApp.Views.start = Em.View.extend({
@@ -217,6 +214,8 @@ function getTotalPercentage()
  	
 	$('span').html('00:05');
 	var oldQuestionId=QuizApp.main.questionCount;
+	QuizApp.main.set('resultPercentage',Math.round(QuizApp.main.answerCount*10));
+
 	setInterval(function() {	
 		if(QuizApp.main.quizOver)
 			return;
@@ -227,25 +226,21 @@ function getTotalPercentage()
 		var timer = $('span').html();
 		timer = timer.split(':');
 		var minutes = timer[0];
-		var seconds = timer[1];
-		
+		var seconds = timer[1];		
+
 		if (currentQuestionId>10) return;
 		if(currentQuestionId<=10)
 		{
 			
 				if (seconds== 00 && minutes == 00 ) {
-					if(QuizApp.main.quizSetCount!=11)
+					if(QuizApp.main.quizSetCount===11)
 					{
-						nextQuestion();
+						getTotalPercentage();							
+																			
 					}
-					else
-					{	
-						nextQuestion();
-						getTotalPercentage();				
-					}
+					nextQuestion();	
 					return;
-				}
-		
+				}				
 				seconds -= 1;
 				if (minutes < 0) return;
 		
@@ -263,7 +258,7 @@ function getTotalPercentage()
 					QuizApp.main.set('quizSetCount',11);
 				}		
 		
-		}
+		}			
 	}, 1000);
  }
  
