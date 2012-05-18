@@ -33,7 +33,8 @@
 		
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	
+							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	-->
+
 		
 
       </div>-->
@@ -42,8 +43,12 @@
 	  {{#unless QuizApp.main.isStartPage}}
 			<!--Start Page</br>-->
 			<b> Name</b>{{view QuizApp.Views.Text}}
+	  	{{#unless QuizApp.main.isStartPage}}
+			
+			<b> Name</b>{{view QuizApp.Views.Text}}</br></br>
 			{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
 		{{/unless}}
+
 		{{#unless QuizApp.main.isSubmitted}}
 			{{#each questions}}
 			  {{#view QuizApp.Views.Question questionBinding="this" }}            
@@ -57,18 +62,28 @@
 					<br>
 				{{/if}}
 			  {{/view}}
-			{{/each}}			
+			{{/each}}				
 		{{/unless}}
-			
+		
 		{{#unless QuizApp.main.isResultDisplayed}}
-			Results
+			<h5>Result:</h5></br>
+
+				{{ answer }}  of 10 </br>
+				{{QuizApp.main.resultPercentage}}%</br>
+
+			You must study harder!</br>
+
+				Time Spent
+					1:42
 		{{/unless}}
 	  </div>	
 		
 	<div id="footer">
-      <div id="next">
-		{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
-	  </div>
+    		<div id="next">
+			{{#unless QuizApp.main.isSubmitted}}
+				{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
+			{{/unless}}
+	      	</div>		
     </div>
     </script>
 
