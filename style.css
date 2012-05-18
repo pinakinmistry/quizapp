@@ -3,9 +3,15 @@ body {
 	
 }
 
-button{
-background-color: white;
+.startButton{
+	background-image: url('images/play.png');
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 71px;
+    width: 69px;
+    border: none;
 }
+
 .container-fluid{
 
 }
@@ -30,6 +36,16 @@ width: 20%;
 line-height:2.0em;
 height:195px;
 }
+
+#startQuiz
+{
+margin: 10px !important;
+}
+
+#map b{
+margin: 50px;
+}
+
 
 h4{
 float: right;

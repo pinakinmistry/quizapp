@@ -193,6 +193,7 @@ function getTotalPercentage()
 
  QuizApp.Views.start = Em.View.extend({
 	  tagName: 'button',
+	  classNames: ['startButton'],
 	  click: function () {
 			this.$().hide("slow", function() {			
 			});
