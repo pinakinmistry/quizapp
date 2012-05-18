@@ -189,7 +189,6 @@
  
 
  QuizApp.Views.start = Em.View.extend({
-	  classNames: ['inputElements'],
 	  tagName: 'button',
 	  click: function () {
 			this.$().hide("slow", function() {

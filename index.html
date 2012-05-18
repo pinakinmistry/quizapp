@@ -24,8 +24,8 @@
 		<span>00:05</span>
 		<h4> Score : {{ answer }} </h4>
 	</div>
-  	<div id="details">
-		<!--
+  	<!--<div id="details">
+		
 		
 		<b>Employee Id</b>
 		{{view QuizApp.Views.Text}}
@@ -33,15 +33,16 @@
 		
 		<b> Difficulty Level: </b> 
 		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	-->
-		{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
+							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	
+		
 
-      </div>
+      </div>-->
   
       <div id="map" class='nonormalMap'>
 	  {{#unless QuizApp.main.isStartPage}}
-			Start Page</br>
+			<!--Start Page</br>-->
 			<b> Name</b>{{view QuizApp.Views.Text}}
+			{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
 		{{/unless}}
 		{{#unless QuizApp.main.isSubmitted}}
 			{{#each questions}}
