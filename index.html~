@@ -17,111 +17,89 @@
  
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
 
-    <div>
-        <h2> {{ name }} </h2>
-		<br />
-		<h4 id="timer">Timer : </h4>
-		<span>00:05</span>
-		<h4> Score : {{ answer }} </h4>
-	</div>
-  	<div id="details">
-		<!--
-		
-		<b>Employee Id</b>
-		{{view QuizApp.Views.Text}}
-		
-		
-		<b> Difficulty Level: </b> 
-		{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
-							selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	-->
-		
-
-      </div>
+		<div>
+		    <h2> {{ name }} </h2>
+			<br />
+			<h4 id="timer">Timer : </h4>
+			<span>00:05</span>
+			<h4> Score : {{ answer }} </h4>
+		</div>
+  	
+		<div id="details">
+		</div>
   
-      <div id="map" class='nonormalMap'>
-	  	{{#unless QuizApp.main.isStartPage}}
+		<div id="map" class='nonormalMap'>
+		  	
+			{{#unless QuizApp.main.isStartPage}}
 			
-			<b> Name</b>{{view QuizApp.Views.Text}}</br></br>
-			{{#view QuizApp.Views.start}}{{QuizApp.main.buttonStart}}{{/view}}
-		{{/unless}}
-
-		{{#unless QuizApp.main.isSubmitted}}
-			{{#each questions}}
-			  {{#view QuizApp.Views.Question questionBinding="this" }}            
-
-				{{#if pageId}}
-					<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
-
-						{{#each options}}
-							{{view Em.RadioButton  title=option option=option}}
-						{{/each}} 
-					<br>
-				{{/if}}
-			  {{/view}}
-			{{/each}}				
-		{{/unless}}
-		
-		{{#unless QuizApp.main.isResultDisplayed}}
-			<h5>Result:</h5></br>
-
-				{{ answer }}  of 10 </br>
-				{{resultPercentage}}</br>
-
-			You must study harder!</br>
-
-				Time Spent
-					1:42
-		{{/unless}}
-	  </div>	
-		
-	<div id="footer">
-    		<div id="next">
-			{{#unless QuizApp.main.isSubmitted}}
-				{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
+				<b> Name</b>{{view QuizApp.Views.Text}}</br>
+				<b> Difficulty Level: </b> 
+				{{view Ember.Select contentBinding="QuizApp.main.difficultyLevels"
+								selectionBinding="QuizApp.main.selectedLevel" class="inputElements"}}	</br></br>
+				{{#view QuizApp.Views.start}}Start Quiz{{/view}}
 			{{/unless}}
-	      	</div>		
-    </div>
+
+			{{#unless QuizApp.main.isSubmitted}}
+				{{#each questions}}
+				  {{#view QuizApp.Views.Question questionBinding="this" }}            
+
+					{{#if pageId}}
+						<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
+
+							{{#each options}}
+								{{view Em.RadioButton  title=option option=option}}
+							{{/each}} 
+						<br>
+					{{/if}}
+
+				  {{/view}}
+				{{/each}}				
+			{{/unless}}
+		
+			{{#unless QuizApp.main.isResultDisplayed}}
+				<h5>Result:</h5></br>
+
+					{{ answer }}  of {{QuizApp.main.totalQuestion}}</br>
+					{{QuizApp.main.resultPercentage}}%</br>
+
+					You must study harder!</br>
+
+					Time Spent 1:42
+			{{/unless}}
+		</div>	
+		
+		<div id="footer">
+				<div id="next">
+				{{#unless QuizApp.main.isSubmitted}}
+					{{#view QuizApp.Views.Next }}{{QuizApp.main.buttonName}}{{/view}}
+				{{/unless}}
+			  	</div>		
+		</div>
+
     </script>
 
   </head>
   <body>
-  <div id="main_container">
-	<div id="header">
-     </div>
-             
-    <div id="main_content">
-     	<div class="center_content">
-			<div class="welcome_block">
-            	<div class="title"><img src="images/title_welcome.gif" alt="" title="" /></div>
-				<div class='container-fluid'>
-      <div class='row-fluid'>
-        <div class='span12'>
-          <script type='text/x-handlebars'>
-            {{view QuizApp.Views.App}}	
-          </script>
-        </div>
-      </div>
-            </div>
-        </div>
-       
-    </div>
-    
-    
-
-</div>
-    <!--<div class='container-fluid'>
-      <div class='row-fluid'>
-        <div class='span12'>
-          <script type='text/x-handlebars'>
-            {{view QuizApp.Views.App}}	
-
-		
-          </script>
-        </div>
-      </div>
-     
-      
-    </div>-->
+	  <div id="main_container">
+		<div id="header"> </div>		         
+			<div id="main_content">
+		 		<div class="center_content">
+					<div class="welcome_block">
+		        		<div class="title"><img src="images/title_welcome.gif" alt="" title="" /></div>
+						<div class='container-fluid'>
+						  	<div class='row-fluid'>
+								<div class='span12'>
+							  		<script type='text/x-handlebars'>
+										{{view QuizApp.Views.App}}	
+							 		</script>
+								</div>
+				  		  	</div>
+		        		</div>
+		    		</div>		   
+				</div>
+			</div>
+	  </div>   
   </body>
 </html>
+
 
