@@ -46,7 +46,8 @@
 			isStartPage:false,
 			resultPercentage:0,
 			selectedLevel:'Select one',
-			totalQuestion:count.quizSetCount
+			totalQuestion:count.quizSetCount,
+			duration:'00:10'
       });
     }
   });
@@ -252,6 +253,7 @@
 			else if(QuizApp.main.selectedLevel==='Complex')
 			{quizTime='00:30';}
 	
+			QuizApp.main.set('duration',quizTime);
 			$('span').html(quizTime);
 			var oldQuestionId=QuizApp.main.questionCount;
 			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
@@ -263,14 +265,15 @@
 				var currentQuestionId=QuizApp.main.questionCount;
 				if (currentQuestionId!=oldQuestionId) return;
 		
-				var timer = $('span').html();
+				var timer = quizTime;
 				timer = timer.split(':');
 				var minutes = timer[0];
 				var seconds = timer[1];		
 
 				if (currentQuestionId>count.quizSetCount) return;
 				if(currentQuestionId<=count.quizSetCount)
-				{			
+				{
+			
 						if (seconds== 00 && minutes == 00 ) {
 							if(QuizApp.main.questionCount===(count.quizSetCount))
 							{
@@ -291,7 +294,8 @@
 						if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
 						$('span').html(minutes + ':' + seconds);
 						min=minutes;
-						sec=seconds;		
+						sec=seconds;
+						quizTime=minutes+':'+seconds;		
 				}			
 			}, 1000);
 	   }

@@ -647,7 +647,7 @@ QuizApp.Data.questionsHigh = [
   }
 ];
   
-  count={"quizSetCount":5,
+  count={"quizSetCount":10,
 	   	"totalSetCount":20,
 		"quizTime":05
 		};
