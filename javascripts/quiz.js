@@ -45,6 +45,7 @@
 			isResultDisplayed:true,
 			isStartPage:false,
 			resultPercentage:0,
+			totalTimeTaken:0,
 			selectedLevel:'Select one',
 			totalQuestion:count.quizSetCount,
 			duration:'00:10'
@@ -128,6 +129,7 @@
 					QuizApp.main.set('questionCount',1);
 					console.log('Question Count :'+QuizApp.main.questionCount);
 					console.log('Random Value: '+randVal);
+					startQuizTimer();
 					startTimer();
 					QuizApp.main.set('isSubmitted',false);
 					QuizApp.main.set('isStartPage',true);
@@ -302,6 +304,30 @@
 	 
 	var min;
 	var sec;
+	var totalMin=0;
+	var totalSec=0;
+	
+	
+	function startQuizTimer() {
+		 	
+		setInterval(function() {	
+			if(quizStatus.quizOver)
+			{
+				QuizApp.main.set('totalTimeTaken',totalMin + ":" + totalSec);
+				return;
+			}
+			
+			totalSec += 1;
+			if (totalSec == 60)
+			{
+				totalMin += 1;
+				totalSec = 0;
+			}
+	
+			
+					
+		}, 1000);
+	  }
 
 }).call(this);
 
