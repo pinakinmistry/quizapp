@@ -48,7 +48,8 @@
 			totalTimeTaken:0,
 			selectedLevel:'Select one',
 			totalQuestion:count.quizSetCount,
-			duration:'00:10'
+			duration:'00:10',
+			message:''
       });
     }
   });
@@ -89,7 +90,9 @@
 		questionsBinding: 'main.questions',  
 		difficultyLevelsBinding: 'main.difficultyLevels',
 		selectedLevelBinding: 'main.selectedLevel',
-		templateName: 'app/templates/app',    
+		timeTakenBinding:'main.totalTimeTaken',
+		summaryMessageBinding:'main.message',
+		templateName: 'app/templates/app'    
 	  });
 
 	  	
@@ -210,7 +213,19 @@
 			{					
 					this.$().hide("slow", function() {			
 					});		
-					getTotalPercentage();			
+					getTotalPercentage();
+				    if(QuizApp.main.resultPercentage<50)
+					{
+						QuizApp.main.set('message','You must study harder!');
+					}	
+					else if(QuizApp.main.resultPercentage>50 && QuizApp.main.resultPercentage<=80)
+					{
+						QuizApp.main.set('message','Good..You can perform better!');
+					}	
+					else
+					{ 
+						QuizApp.main.set('message','Excellent!');
+					}
 			}
 			if(currentQuestion<=count.quizSetCount)
 			{
@@ -227,7 +242,7 @@
 					QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
 					
 			}		
-			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
+			//QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
 	
 			if (currentQuestion+1<=count.quizSetCount){
 				startTimer();
@@ -235,7 +250,8 @@
 			if(currentQuestion===count.quizSetCount-1)
 			{
 				QuizApp.main.set('buttonName','Submit');
-			}		
+			}	
+				
 	  }
 	 
 	  function getTotalPercentage()
