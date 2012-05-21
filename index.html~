@@ -21,8 +21,7 @@
 			{{#if QuizApp.main.isResultDisplayed}}
 				<div>
 					<h2> {{ name }} </h2>
-					<br />
-					<h4 id="timer">Timer : </h4>
+					<br />					
 					<span>{{QuizApp.main.duration}}</span>
 					<h4> Score : {{ answer }} of {{QuizApp.main.totalQuestion}} </h4>
 				</div>
