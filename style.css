@@ -10,6 +10,7 @@ body {
     height: 71px;
     width: 69px;
     border: none;
+    margin: auto;
 }
 
 .container-fluid{
@@ -23,7 +24,7 @@ background-color: '';
 
 .nonormalMap{
 
-margin-top:80px;
+margin-top:50px;
 }
 
 #details{
@@ -34,18 +35,19 @@ width: 20%;
 
 #map{
 line-height:2.0em;
-height:195px;
+height:225px;
 }
 
 #startQuiz
 {
-margin: 10px !important;
+position: relative;
+top: 46px;
+width: 60px;
 }
 
-#map b{
-margin: 50px;
+#map div b{
+margin-left: 100px;
 }
-
 
 h4{
 float: right;
@@ -56,5 +58,27 @@ float: right;
 float: left;
 }
 
-#next{
+#name{
+margin-bottom: 30px;
+}
+
+.error{
+font-size: 10px;
+color: red;
+display: none;
+}
+
+.startPageLabel{
+width: 30%;
+float: left;
+}
+
+.startPageInput{
+width: 25%;
+float: left;
+}
+
+.errorLabels{
+width: 35%;
+float: right;
 }

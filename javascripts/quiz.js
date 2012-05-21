@@ -1,5 +1,5 @@
 (function() {
-
+	
   	window.QuizApp = Ember.Application.create({
     Controllers: Ember.Namespace.create(),
     Models: Ember.Namespace.create(),
@@ -50,7 +50,7 @@
       });
     }
   });
-
+	
 }).call(this);
 
 (function() {
@@ -113,30 +113,46 @@
 	  });
 	 
 	  QuizApp.Views.start = Em.View.extend({
-		  classNames: ['inputElements'],
+		  classNames: ['startButton'],
 		  tagName: 'button',
 		  click: function () {
-				this.$().hide("slow", function() {			
-				});
-					var randVal = Math.round(Math.random()*count.totalSetCount);						
-	 				if (randVal===0)
-		  			{
-						randVal++;
-		  			}
-					QuizApp.main.set('currentQuestionId',randVal);
-					QuizApp.main.set('questionCount',1);
-					console.log('Question Count :'+QuizApp.main.questionCount);
-					console.log('Random Value: '+randVal);
-					startTimer();
-					QuizApp.main.set('isSubmitted',false);
-					QuizApp.main.set('isStartPage',true);
+			  if($('#txtName').val().length > 0 && $('#map select :selected')[0].index > 0){
+				$('.error').hide();
+				//this.$().hide("slow", function() {			
+				//});
+				var randVal = Math.round(Math.random()*count.totalSetCount);						
+				if (randVal===0)
+				{
+					randVal++;
 				}
+				QuizApp.main.set('currentQuestionId',randVal);
+				QuizApp.main.set('questionCount',1);
+				console.log('Question Count :'+QuizApp.main.questionCount);
+				console.log('Random Value: '+randVal);
+				startTimer();
+				QuizApp.main.set('isSubmitted',false);
+				QuizApp.main.set('isStartPage',true);
+			}
+			else{
+				if($('#txtName').val().length == 0){
+					$('#errName').show("slow");
+				}
+				else{
+					$('#errName').hide("slow");
+				}
+				if($('#map select :selected')[0].index == 0){
+					$('#errLevel').show("slow");
+				}
+				else{
+					$('#errLevel').hide("slow");
+				}
+			}
+		}
 	  });
 
 	  QuizApp.Views.Text = Em.View.extend({
-		 classNames: ['inputElements'],
 		 tagName: 'input',
-		 enabled: true,
+		 enabled: true,		 
 	  });
 
 	  QuizApp.Views.DisabledText = Em.View.extend({
