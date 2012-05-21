@@ -121,14 +121,7 @@
 				nextQuestion();
 			}
 		
-			else if(QuizApp.main.get('buttonName')==='Go to Homepage'){				
-				/*console.log("I am inside the submit");
-				QuizApp.main.set('isSubmitted',true);
-				QuizApp.main.set('isResultDisplayed',true);
-				QuizApp.main.set('isStartPage',false);
-				QuizApp.main.set('isLastPage',true);*/
-				//this.$().hide("slow", function() {			
-					//});
+			else if(QuizApp.main.get('buttonName')==='Go to Homepage'){								
 					window.location.reload();
 				}			
 			}
@@ -152,10 +145,7 @@
 				QuizApp.main.set('currentQuestionId',randVal);
 				QuizApp.main.set('questionCount',1);
 				console.log('Question Count :'+QuizApp.main.questionCount);
-				console.log('Random Value: '+randVal);
-
-				//startQuizTimer(); // To be followed up with pinakin
-				//startTimer();				
+				console.log('Random Value: '+randVal);			
 
 				startQuizTimer();
 				startTimer();
@@ -249,7 +239,24 @@
 			var nextQuestion=QuizApp.main.currentQuestionId+QuizApp.main.questionIncrement;
 			var user_answer=$("input[@name=default]:checked").val();
 			var question=getQuestionArray(true);	
-	
+			
+			if(currentQuestion<=count.quizSetCount)
+			{
+					if(nextQuestion>count.totalSetCount)
+					{
+						nextQuestion=nextQuestion-count.totalSetCount;
+					}
+					console.log('Next Question : '+nextQuestion);
+					QuizApp.main.set('currentQuestionId', nextQuestion);	
+					if(user_answer===question.answer)
+					{		
+						QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
+					}
+					QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
+					
+					console.log(QuizApp.main.get('questionCount'));
+					
+			}		
 
 			if(QuizApp.main.get('buttonName')==='Submit')
 			{		
@@ -273,24 +280,7 @@
 				QuizApp.main.set('buttonName','Go to Homepage');	
 				QuizApp.main.set('isSubmitted',true);	
 			}
-			if(currentQuestion<=count.quizSetCount)
-			{
-					if(nextQuestion>count.totalSetCount)
-					{
-						nextQuestion=nextQuestion-count.totalSetCount;
-					}
-					console.log('Next Question : '+nextQuestion);
-					QuizApp.main.set('currentQuestionId', nextQuestion);	
-					if(user_answer===question.answer)
-					{		
-						QuizApp.main.set('answerCount',QuizApp.main.answerCount+1);
-					}
-					QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
-					
-					console.log(QuizApp.main.get('questionCount'));
-					
-			}		
-			//QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
+				
 	
 			if (currentQuestion+1<=count.quizSetCount){
 				startTimer();
@@ -299,10 +289,6 @@
 			{
 				QuizApp.main.set('buttonName','Submit');
 			}	
-			
-		
-			
-				
 	  }
 	 
 	  function getTotalPercentage()
@@ -315,19 +301,19 @@
 
 	 
 	  function startTimer() {
-		 	var quizTime='00:10';
+		 	var quizTime=duration.quizSimple;
 			if(QuizApp.main.selectedLevel==='Simple')
-			{quizTime='00:10';}
+			{quizTime=duration.quizSimple;}
 			else if(QuizApp.main.selectedLevel==='Average')
-			{quizTime='00:20';}
+			{quizTime=duration.quizAverage;}
 			else if(QuizApp.main.selectedLevel==='Complex')
-			{quizTime='00:30';}
+			{quizTime=duration.quizComplex;}
+	
 	
 			QuizApp.main.set('duration',quizTime);
 			$('span').html(quizTime);
 			var oldQuestionId=QuizApp.main.questionCount;
-			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
-
+			
 			setInterval(function() {	
 				if(quizStatus.quizOver)
 					return;
