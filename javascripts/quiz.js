@@ -309,9 +309,13 @@
 			else if(QuizApp.main.selectedLevel==='Complex')
 			{quizTime=duration.quizComplex;}
 	
-	
-			QuizApp.main.set('duration',quizTime);
-			$('span').html(quizTime);
+			var timer = quizTime;
+			timer = timer.split(':');
+			var minutes = timer[0];
+			var seconds = timer[1];	
+			
+			QuizApp.main.set('duration',seconds);
+			$('span').html(seconds);
 			var oldQuestionId=QuizApp.main.questionCount;
 			
 			setInterval(function() {	
@@ -321,10 +325,7 @@
 				var currentQuestionId=QuizApp.main.questionCount;
 				if (currentQuestionId!=oldQuestionId) return;
 		
-				var timer = quizTime;
-				timer = timer.split(':');
-				var minutes = timer[0];
-				var seconds = timer[1];		
+					
 
 				if (currentQuestionId>count.quizSetCount) return;
 				if(currentQuestionId<=count.quizSetCount)
@@ -348,7 +349,7 @@
 						}
 						else if (seconds < 10 && seconds.length != 2) seconds = '0' + seconds;
 						if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
-						$('span').html(minutes + ':' + seconds);
+						$('span').html(seconds);
 						min=minutes;
 						sec=seconds;
 						quizTime=minutes+':'+seconds;		
