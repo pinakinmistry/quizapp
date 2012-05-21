@@ -62,6 +62,17 @@ float: left;
 margin-bottom: 30px;
 }
 
+#userName{
+float: left;
+font-family: "mistral";
+font-size: 26px;
+margin-left: 20px;
+}
+
+.title img{
+float: left;
+}
+
 .error{
 font-size: 10px;
 color: red;
@@ -81,4 +92,8 @@ float: left;
 .errorLabels{
 width: 35%;
 float: right;
+}
+
+.emptyDiv{
+clear: both;
 }

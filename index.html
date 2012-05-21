@@ -17,13 +17,15 @@
  
     <script type ="text/x-handlebars" data-template-name="app/templates/app">
 		{{#if QuizApp.main.isStartPage}}
-			<div>
-				<h2> {{ name }} </h2>
-				<br />
-				<h4 id="timer">Timer : </h4>
-				<span>00:05</span>
-				<h4> Score : {{ answer }} </h4>
-			</div>
+			{{#if QuizApp.main.isResultDisplayed}}
+				<div>
+					<h2> {{ name }} </h2>
+					<br />
+					<h4 id="timer">Timer : </h4>
+					<span>00:05</span>
+					<h4> Score : {{ answer }} </h4>
+				</div>
+			{{/if}}
 		{{/if}}
 		<div id="map" class='nonormalMap'>
 			{{#unless QuizApp.main.isStartPage}}
@@ -60,7 +62,6 @@
 			{{#unless QuizApp.main.isSubmitted}}
 				{{#each questions}}
 				  {{#view QuizApp.Views.Question questionBinding="this" }}            
-
 					{{#if pageId}}
 						<h3> Q {{QuizApp.main.questionCount}}. {{questionText}} </h3>				
 
@@ -75,7 +76,7 @@
 			{{/unless}}
 		
 			{{#unless QuizApp.main.isResultDisplayed}}
-				<h5>Result:</h5></br>
+				<h3>Result:</h3></br>
 
 					{{ answer }}  of {{QuizApp.main.totalQuestion}}</br>
 					{{QuizApp.main.resultPercentage}}%</br>
@@ -103,7 +104,13 @@
 			<div id="main_content">
 		 		<div class="center_content">
 					<div class="welcome_block">
-		        		<div class="title"><img src="images/title_welcome.gif" alt="" title="" /></div>
+		        		<div class="title">
+							<img src="images/title_welcome.gif" alt="" title="" />
+							<div id="userName">
+							</div>
+							<div class="emptyDiv">
+							</div>
+						</div>
 						<div class='container-fluid'>
 						  	<div class='row-fluid'>
 								<div class='span12'>

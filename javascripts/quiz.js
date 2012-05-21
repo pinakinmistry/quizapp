@@ -49,7 +49,8 @@
 			selectedLevel:'Select one',
 			totalQuestion:count.quizSetCount,
 			duration:'00:10',
-			message:''
+			message:'',
+			name:''
       });
     }
   });
@@ -122,9 +123,9 @@
 		  tagName: 'button',
 		  click: function () {
 			  if($('#txtName').val().length > 0 && $('#map select :selected')[0].index > 0){
+				QuizApp.main.set('name',$('#txtName').val());
+				$("#userName").append(QuizApp.main.get('name'));
 				$('.error').hide();
-				//this.$().hide("slow", function() {			
-				//});
 				var randVal = Math.round(Math.random()*count.totalSetCount);						
 				if (randVal===0)
 				{
