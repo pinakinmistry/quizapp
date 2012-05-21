@@ -25,9 +25,7 @@
 				<h4> Score : {{ answer }} </h4>
 			</div>
 		{{/if}}
-  	
 		<div id="map" class='nonormalMap'>
-		  	
 			{{#unless QuizApp.main.isStartPage}}
 				<div id="name">
 					<div class="startPageLabel">
@@ -82,9 +80,9 @@
 					{{ answer }}  of {{QuizApp.main.totalQuestion}}</br>
 					{{QuizApp.main.resultPercentage}}%</br>
 
-					You must study harder!</br>
+					{{summaryMessage}}</br>
 
-					Time Spent 1:42
+					Time Spent :{{timeTaken}}
 			{{/unless}}
 		</div>	
 		

@@ -45,8 +45,11 @@
 			isResultDisplayed:true,
 			isStartPage:false,
 			resultPercentage:0,
+			totalTimeTaken:0,
 			selectedLevel:'Select one',
-			totalQuestion:count.quizSetCount
+			totalQuestion:count.quizSetCount,
+			duration:'00:10',
+			message:''
       });
     }
   });
@@ -87,7 +90,9 @@
 		questionsBinding: 'main.questions',  
 		difficultyLevelsBinding: 'main.difficultyLevels',
 		selectedLevelBinding: 'main.selectedLevel',
-		templateName: 'app/templates/app',    
+		timeTakenBinding:'main.totalTimeTaken',
+		summaryMessageBinding:'main.message',
+		templateName: 'app/templates/app'    
 	  });
 
 	  	
@@ -129,6 +134,7 @@
 				QuizApp.main.set('questionCount',1);
 				console.log('Question Count :'+QuizApp.main.questionCount);
 				console.log('Random Value: '+randVal);
+				//startQuizTimer(); // To be followed up with pinakin
 				startTimer();
 				QuizApp.main.set('isSubmitted',false);
 				QuizApp.main.set('isStartPage',true);
@@ -223,7 +229,19 @@
 			{					
 					this.$().hide("slow", function() {			
 					});		
-					getTotalPercentage();			
+					getTotalPercentage();
+				    if(QuizApp.main.resultPercentage<50)
+					{
+						QuizApp.main.set('message','You must study harder!');
+					}	
+					else if(QuizApp.main.resultPercentage>50 && QuizApp.main.resultPercentage<=80)
+					{
+						QuizApp.main.set('message','Good..You can perform better!');
+					}	
+					else
+					{ 
+						QuizApp.main.set('message','Excellent!');
+					}
 			}
 			if(currentQuestion<=count.quizSetCount)
 			{
@@ -240,7 +258,7 @@
 					QuizApp.main.set('questionCount',QuizApp.main.questionCount+1);	
 					
 			}		
-			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
+			//QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
 	
 			if (currentQuestion+1<=count.quizSetCount){
 				startTimer();
@@ -248,7 +266,8 @@
 			if(currentQuestion===count.quizSetCount-1)
 			{
 				QuizApp.main.set('buttonName','Submit');
-			}		
+			}	
+				
 	  }
 	 
 	  function getTotalPercentage()
@@ -268,6 +287,7 @@
 			else if(QuizApp.main.selectedLevel==='Complex')
 			{quizTime='00:30';}
 	
+			QuizApp.main.set('duration',quizTime);
 			$('span').html(quizTime);
 			var oldQuestionId=QuizApp.main.questionCount;
 			QuizApp.main.set('resultPercentage',(QuizApp.main.answerCount*100)/count.quizSetCount);
@@ -279,14 +299,15 @@
 				var currentQuestionId=QuizApp.main.questionCount;
 				if (currentQuestionId!=oldQuestionId) return;
 		
-				var timer = $('span').html();
+				var timer = quizTime;
 				timer = timer.split(':');
 				var minutes = timer[0];
 				var seconds = timer[1];		
 
 				if (currentQuestionId>count.quizSetCount) return;
 				if(currentQuestionId<=count.quizSetCount)
-				{			
+				{
+			
 						if (seconds== 00 && minutes == 00 ) {
 							if(QuizApp.main.questionCount===(count.quizSetCount))
 							{
@@ -307,13 +328,44 @@
 						if (minutes < 10 && minutes.length != 2) minutes = '0' + minutes;
 						$('span').html(minutes + ':' + seconds);
 						min=minutes;
-						sec=seconds;		
+						sec=seconds;
+						quizTime=minutes+':'+seconds;		
 				}			
 			}, 1000);
 	   }
 	 
 	var min;
 	var sec;
+	var totalMin=0;
+	var totalSec=0;
+	
+	
+	function startQuizTimer() {
+		 	
+		setInterval(function() {	
+			if(quizStatus.quizOver)
+			{
+				if ((totalSec).toString().length < 2)
+					totalSec = '0' + totalSec;
+				
+				if ((totalMin).toString().length < 2)
+					totalMin = '0' + totalMin;
+					
+				QuizApp.main.set('totalTimeTaken',totalMin + ":" + totalSec);
+				return;
+			}
+			
+			totalSec += 1;
+			if (totalSec == 60)
+			{
+				totalMin += 1;
+				totalSec = 0;
+			}
+	
+			
+					
+		}, 1000);
+	  }
 
 }).call(this);
 
