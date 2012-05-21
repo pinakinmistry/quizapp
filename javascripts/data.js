@@ -119,12 +119,12 @@ QuizApp.Data.questions = [
     "questionId":11
   },
 {
-    "question": "What is the correct syntax for referring to an external script called "xxx.js"?",
+    "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
 	"difficultyLevel": "low",
     "options": [ {"option": "<script type='text/javascript' src='xxx.js'>"},
 				 {"option": "<script type='text/javascript' href='xxx.js'>"}
 				],
-  "answer": "option": "<script type='text/javascript' href='xxx.js'>",
+  "answer": "<script type='text/javascript' href='xxx.js'>",
     "pageId":2,
     "questionId":12
   },
@@ -140,7 +140,7 @@ QuizApp.Data.questions = [
     "questionId":13
   },
   {
-    "question": "What is the correct JavaScript syntax for opening a new window called "w2" ?",
+    "question": "What is the correct JavaScript syntax for opening a new window called 'w2' ?",
 	"difficultyLevel": "medium",
     "options": [ {"option": "w2=window.new('http://www.w3schools.com')"},
 				 {"option": "w2=window.open('http://www.w3schools.com')"}
@@ -152,10 +152,10 @@ QuizApp.Data.questions = [
 {
     "question": "What is the preferred way for adding a background color in HTML?",
 	"difficultyLevel": "medium",
-    "options": [ {"option": "<body background="yellow">"},
-				 {"option": "<body style="background-color:yellow">"}
+    "options": [ {"option": "<body background='yellow'>"},
+				 {"option": "<body style='background-color:yellow'>"}
 				],
-    "answer": "<body style="background-color:yellow">",
+    "answer": "<body style='background-color:yellow'>",
     "pageId":2,
     "questionId":15
   },
@@ -173,11 +173,11 @@ QuizApp.Data.questions = [
   {
     "question": "What is the correct HTML for creating a hyperlink?",
 	"difficultyLevel": "high",
-    "options": [ {"option": "<a url="http://www.w3schools.com">W3Schools.com</a>"},
-				 {"option": "<a href="http://www.w3schools.com">W3Schools</a>"},
+    "options": [ {"option": "<a url='http://www.w3schools.com'>W3Schools.com</a>"},
+				 {"option": "<a href='http://www.w3schools.com'>W3Schools</a>"},
 				 {"option": "<a>http://www.w3schools.com</a>"}
 				],
-   "answer": "<a href="http://www.w3schools.com">W3Schools</a>",
+   "answer": "<a href='http://www.w3schools.com'>W3Schools</a>",
     "pageId": 2,
     "questionId":17
   },
@@ -194,11 +194,11 @@ QuizApp.Data.questions = [
   {
     "question": "What is the correct HTML for making a checkbox?",
 	"difficultyLevel": "low",
-    "options": [ {"option": "<input type="check" />"},
-				 {"option": "<input type="checkbox" />"},
+    "options": [ {"option": "<input type='check' />"},
+				 {"option": "<input type='checkbox' />"},
 				 {"option": " <checkbox>"} 
 				],
-   "answer": "Yes",
+   "answer": "<input type='checkbox' />",
     "pageId":3,
   	"questionId":19
   },
