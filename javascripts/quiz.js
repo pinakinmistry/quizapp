@@ -133,7 +133,7 @@
 		  classNames: ['startButton'],
 		  tagName: 'button',
 		  click: function () {
-			  if($('#txtName').val().length > 0 && $('#map select :selected')[0].index > 0){
+			  if($('#txtName').val().length > 0 && $('#quiz select :selected')[0].index > 0){
 				QuizApp.main.set('name',$('#txtName').val());
 				$("#userName").append(QuizApp.main.get('name'));
 				$('.error').hide();
@@ -162,7 +162,7 @@
 				else{
 					$('#errName').hide("slow");
 				}
-				if($('#map select :selected')[0].index == 0){
+				if($('#quiz select :selected')[0].index == 0){
 					$('#errLevel').show("slow");
 				}
 				else{

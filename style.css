@@ -17,13 +17,19 @@ body {
 
 }
 .next-tier-view{
-background-color: '';
+border-radius: 10px;
+border: solid;
+border-color: blue;
+border-width: 1px;
 }
 
+#timerValue{
+margin-left: 10px;
+font-size: 15px;
+font-weight: bold;
+}
 
-
-.nonormalMap{
-
+.quizClass{
 margin-top:50px;
 }
 
@@ -33,7 +39,7 @@ margin-top:50px;
 width: 20%;
 }
 
-#map{
+#quiz{
 line-height:2.0em;
 height:225px;
 }
@@ -47,6 +53,10 @@ width: 60px;
 
 #map div b{
 margin-left: 100px;
+}
+
+#next{
+padding-top: 10px;
 }
 
 h4{
@@ -64,9 +74,11 @@ margin-bottom: 30px;
 
 #userName{
 float: left;
-font-family: "mistral";
-font-size: 26px;
+font-family: "Arial";
+font-size: 16px;
 margin-left: 20px;
+font-style: italic;
+coloR: darkBlue;
 }
 
 .title img{
