@@ -12,11 +12,12 @@ text-decoration:underline;
 color:#ae1600;
 }
 h1{
-font-size:14px;
-color:#ae1600;
-font-weight:bold;
-padding:5px 0 5px 0;
-margin:0px;
+font-family: "Trebuchet MS";
+font-size: 36px;
+color: darkSlateBlue;
+font-weight: bold;
+padding: 5px 0 5px 250px;
+margin: 0px;
 }
 .clear{
 clear:both;
