@@ -1,0 +1,121 @@
+body {
+   background-color: #000;   
+	
+}
+
+.startButton{
+	background-image: url('images/play.png');
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    height: 71px;
+    width: 69px;
+    border: none;
+    margin: auto;
+}
+
+.container-fluid{
+
+}
+
+
+.next-tier-view{
+border-radius: 10px;
+border: solid;
+border-color: blue;
+border-width: 1px;
+}
+
+#timerValue{
+margin-left: 10px;
+font-size: 15px;
+font-weight: bold;
+}
+
+.quizClass{
+margin-top:50px;
+}
+
+#details{
+float: left;
+margin-top:50px;
+width: 20%;
+}
+
+#quiz{
+line-height:2.0em;
+height:225px;
+}
+
+#startQuiz
+{
+position: relative;
+top: 46px;
+width: 60px;
+}
+
+#map div b{
+margin-left: 100px;
+}
+
+#next{
+padding-top: 10px;
+}
+
+h4{
+float: right;
+
+}
+
+#timer{
+float: left;
+}
+
+#name{
+margin-bottom: 30px;
+}
+
+#userName{
+float: left;
+font-family: "Arial";
+font-size: 16px;
+margin-left: 20px;
+font-style: italic;
+coloR: darkBlue;
+}
+
+.title img{
+float: left;
+}
+
+.error{
+font-size: 10px;
+color: red;
+display: none;
+}
+
+.startPageLabel{
+width: 30%;
+float: left;
+}
+
+.startPageInput{
+width: 25%;
+float: left;
+}
+
+.errorLabels{
+width: 35%;
+float: right;
+}
+
+.emptyDiv{
+clear: both;
+}
+#image-announcement{
+float:left;
+background:url(images/quiz.jpg) no-repeat left top;
+margin-left:100px;
+width:90px;
+height:90px;
+background-repeat:no-repeat;
+}
